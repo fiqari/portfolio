@@ -11,34 +11,21 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section className="hero container grid-12" aria-label="Introduction">
-          <div className="col-span-8-center">
+          <div className="col-span-8">
             <FadeIn>
-              <p className="hero__name">Hi, I'm Wainaina Thomas</p>
+              <h1 className="hero__title" style={{ marginBottom: 'var(--space-2)' }}>
+                Product Designer
+              </h1>
             </FadeIn>
-
             <FadeIn delayClass="fade-in-delay-1">
-              <h1 className="hero__title">UI UX Designer</h1>
-            </FadeIn>
-
-            <FadeIn delayClass="fade-in-delay-2">
-              <p className="hero__subtitle">
+              <p className="hero__subtitle" style={{ fontSize: 'var(--text-xl)', color: 'var(--color-text-secondary)' }}>
                 Solving user problems in ways that make business sense
               </p>
             </FadeIn>
+          </div>
 
-            <FadeIn delayClass="fade-in-delay-3">
-              <p className="hero__body">
-                I'm a UX designer looking for my first full-time role. I care about understanding real problems before designing solutions — which is why research comes before pixels in everything I build.
-              </p>
-            </FadeIn>
-
-            <FadeIn delayClass="fade-in-delay-3">
-              <p className="hero__status">
-                <span>Currently:</span> Building a portfolio, learning in public, based in Nairobi, Kenya
-              </p>
-            </FadeIn>
-
-            <FadeIn delayClass="fade-in-delay-4" className="hero__location">
+          <div className="col-span-4" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', marginTop: 'var(--space-4)' }}>
+            <FadeIn delayClass="fade-in-delay-2" className="hero__location">
               <div className="hero__location-text">
                 <span className="hero__location-city">Nairobi, KE</span>
                 <LiveClock />
@@ -47,34 +34,30 @@ export default function Home() {
                 src="/assets/timestower.png"
                 alt="Times Tower, Nairobi"
                 className="hero__location-img"
-                loading="lazy"
+                loading="eager"
               />
-            </FadeIn>
-
-            <FadeIn delayClass="fade-in-delay-4">
-              <a href="#work" className="hero__cta">View my work ↓</a>
             </FadeIn>
           </div>
         </section>
 
         {/* Selected Work */}
         <section className="section section--large container grid-12" id="work" aria-label="Selected work">
-          <div className="col-span-full" style={{ marginBottom: 'var(--space-8)' }}>
+          <div className="col-span-full">
             <FadeIn>
-              <p className="section__heading" style={{ marginBottom: 0 }}>Selected Work</p>
+              <p className="section__heading">Selected Work</p>
             </FadeIn>
           </div>
 
-          <div className="col-span-8-center project-grid">
+          <div className="col-span-full project-grid">
             <FadeIn>
               <ProjectCard
                 id="project-dill"
                 href="/dill"
                 imageSrc="/assets/nnm/1.png"
                 imageAlt="Dill mobile app interface showing supermarket deals"
-                headline="How we centralized Kenyan supermarket deals into a single app"
-                subtitle="Dill — Deal Aggregator"
-                tags={["UX Research", "Mobile", "Kenya"]}
+                headline="Dill: An Aggregator of Intent for Kenya's High-Inflation Grocery Market"
+                subtitle="Mobile UX & Data Strategy — Mid-range Android, high inflation"
+                tags={["Product Strategy", "B2C Data Utility", "Emerging Markets"]}
               />
             </FadeIn>
 
@@ -84,10 +67,29 @@ export default function Home() {
                 href="/nnm"
                 imageSrc="/assets/nnm/2.png"
                 imageAlt="Nairobi National Museum mobile app showing guest checkout flow"
-                headline="The museum that holds humanity's oldest bones couldn't sell a ticket online"
-                subtitle="Nairobi National Museum — Ticketing Redesign"
-                tags={["Mobile", "Guest Checkout", "Kenya"]}
+                headline="Nairobi National Museum: Eliminating Front-Door Friction with a 2-Minute Guest Checkout"
+                subtitle="Nairobi National Museum — Unsolicited Redesign"
+                tags={["Mobile First", "Fintech / M-Pesa", "UX Architecture"]}
               />
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Availability & Contact */}
+        <section className="section container grid-12" id="contact">
+          <div className="col-span-8-center availability">
+            <FadeIn>
+              <h2 className="availability__heading">Available for Hire</h2>
+              <p className="availability__text">
+                Nairobi-based. <strong>Fully open to remote roles</strong> across overlapping time zones.
+                Willing to relocate for the right role.
+              </p>
+              <p className="availability__regions">
+                Target regions: <strong>EU, UK, USA, Australia, Singapore, and the Gulf.</strong>
+              </p>
+              <a href="mailto:hello@wainainathomas.com" className="availability__email">
+                hello@wainainathomas.com
+              </a>
             </FadeIn>
           </div>
         </section>

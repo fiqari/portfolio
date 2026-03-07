@@ -14,8 +14,8 @@ const kumbh = Kumbh_Sans({
 });
 
 export const metadata = {
-  title: "Wainaina Thomas — UX Designer",
-  description: "I design by understanding what users need — and what the business needs from them.",
+  title: "Wainaina Thomas — Product Designer",
+  description: "Product designer shipping fast, considered interfaces for high-constraint markets. Nairobi-based, open to remote.",
 };
 
 export default function RootLayout({ children }) {
@@ -24,6 +24,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${josefin.variable} ${kumbh.variable} antialiased`}
       >
+        {/* Architectural DOM Grid */}
+        <div className="bg-grid-overlay container grid-12" aria-hidden="true">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="bg-grid-col"></div>
+          ))}
+        </div>
         {children}
       </body>
     </html>

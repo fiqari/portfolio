@@ -46,6 +46,11 @@ export default function Navigation() {
     const toggleMenu = () => setIsOpen(!isOpen);
     const closeMenu = () => setIsOpen(false);
 
+    const overlayLinks = [
+        { href: "/#work", label: "Work" },
+        { href: "/#contact", label: "Contact" },
+    ];
+
     return (
         <>
             <nav
@@ -66,14 +71,7 @@ export default function Navigation() {
                         >
                             Work
                         </Link>
-                        <Link
-                            href="/about"
-                            className={`nav__link ${pathname === "/about" ? "nav__link--active" : ""}`}
-                            aria-current={pathname === "/about" ? "page" : undefined}
-                        >
-                            About
-                        </Link>
-                        <Link href="#contact" className="nav__link">
+                        <Link href="/#contact" className="nav__link">
                             Contact
                         </Link>
                     </div>
@@ -90,10 +88,13 @@ export default function Navigation() {
                 aria-controls="nav-overlay"
                 onClick={toggleMenu}
             >
-                <span className="nav__toggle-line"></span>
+                <div className="nav__toggle-icon">
+                    <span className="nav__toggle-bar nav__toggle-bar--top"></span>
+                    <span className="nav__toggle-bar nav__toggle-bar--bottom"></span>
+                </div>
             </button>
 
-            {/* Mobile overlay - MOVED OUTSIDE NAV TO ESCAPE STACKING CONTEXT */}
+            {/* Mobile overlay */}
             <div
                 className={`nav__overlay ${isOpen ? "open" : ""}`}
                 id="nav-overlay"
@@ -101,15 +102,20 @@ export default function Navigation() {
                 aria-label="Navigation menu"
                 aria-modal="true"
             >
-                <Link href="/#work" className="nav__link" onClick={closeMenu}>
-                    Work
-                </Link>
-                <Link href="/about" className="nav__link" onClick={closeMenu}>
-                    About
-                </Link>
-                <Link href="#contact" className="nav__link" onClick={closeMenu}>
-                    Contact
-                </Link>
+                <div className="nav__overlay-inner">
+                    {overlayLinks.map((link, i) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="nav__overlay-link"
+                            onClick={closeMenu}
+                            style={{ "--link-index": i }}
+                        >
+                            <span className="nav__overlay-link-text">{link.label}</span>
+                            <span className="nav__overlay-link-line"></span>
+                        </Link>
+                    ))}
+                </div>
             </div>
         </>
     );
