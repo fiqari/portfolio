@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Nairobi National Museum Ticketing Redesign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-bold text-xl tracking-tight text-gray-900">Your Portfolio</div>
+            <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Back to Projects</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm font-medium mb-4 border border-blue-100">
+                    <i data-lucide="ticket" class="w-4 h-4"></i> Product Design & Content Strategy
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900">
+                    From Frustration to Flow at <span class="text-blue-600">Nairobi National Museum</span>
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Streamlining the gateway to Kenya’s heritage through a frictionless, mobile-first digital ticketing experience.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-200 mt-8">
+                    <div>
+                        <p class="text-sm text-gray-500 font-medium uppercase tracking-wider">Role</p>
+                        <p class="font-semibold mt-1">Lead Product & Content Designer</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 font-medium uppercase tracking-wider">Focus</p>
+                        <p class="font-semibold mt-1">UX Audit, Content Strategy, Prototyping</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-200 aspect-[4/3]">
+                <!-- Video Walkthrough -->
+                <video src="NNM.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+                <div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- The Problem Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 reveal">
+            <div class="mb-12 md:w-2/3">
+                <h2 class="text-3xl font-bold mb-4">The Problem: A Broken Gateway</h2>
+                <p class="text-lg text-gray-600">
+                    A sentiment analysis of 2024–2026 visitor reviews revealed a systemic failure in the current ticketing flow. The primary barriers to entry were <strong class="text-gray-900">System Trust</strong> and <strong class="text-gray-900">Technological Friction</strong> caused by forced eCitizen account creation.
+                </p>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm relative">
+                    <div class="flex text-yellow-400 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                    <p class="text-sm italic text-gray-700 leading-relaxed">"First time in my life I can't get to a museum because I can't buy a ticket. The website was very slow and didn't accept my UK issued cards. After 20 mins, I just gave up."</p>
+                    <p class="text-xs font-semibold text-gray-500 mt-4 uppercase tracking-wider">— Oct 2025</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm relative">
+                    <div class="flex text-yellow-400 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                    <p class="text-sm italic text-gray-700 leading-relaxed">"Extremely difficult process. You need to pay online via some government website. We are visiting so did not have WiFi or cell data."</p>
+                    <p class="text-xs font-semibold text-gray-500 mt-4 uppercase tracking-wider">— Feb 2024</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm relative">
+                    <div class="flex text-yellow-400 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                    <p class="text-sm italic text-gray-700 leading-relaxed">"A convoluted, time-consuming system for getting around the absence of a Kenyan ecitizen or mobile account. I missed it."</p>
+                    <p class="text-xs font-semibold text-gray-500 mt-4 uppercase tracking-wider">— Aug 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 reveal">
+            <h2 class="text-3xl font-bold mb-12 text-center">The Content Strategy: 3 Pillars</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto text-blue-400">
+                        <i data-lucide="eye" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">1. Transparency</h3>
+                    <p class="text-gray-400 text-sm">Clearly stating that the system is digital-only before the user even starts, setting accurate expectations immediately.</p>
+                </div>
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto text-green-400">
+                        <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">2. Validation</h3>
+                    <p class="text-gray-400 text-sm">Ensuring visitors know exactly which ID categories apply to them to avoid "rejection at the gate" anxiety.</p>
+                </div>
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto text-purple-400">
+                        <i data-lucide="git-branch" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">3. Alternative Paths</h3>
+                    <p class="text-gray-400 text-sm">Providing a "Continue as Guest" option to bypass eCitizen login hurdles that frequently cause site crashes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UI & Copy Details Section -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 space-y-32">
+            
+            <!-- Context Image -->
+            <div class="reveal rounded-2xl overflow-hidden max-h-[400px]">
+                <img src="1.jpg" alt="Museum Context" class="w-full object-cover object-center translate-y-[-10%] opacity-80 mix-blend-multiply">
+            </div>
+
+            <!-- Flow Step 1 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div class="order-2 md:order-1 flex justify-center">
+                    <div class="relative w-64 md:w-72 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] border-[8px] border-gray-900 bg-white overflow-hidden">
+                        <img src="3.png" alt="Hero Screen" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 space-y-6">
+                    <div class="text-sm font-bold tracking-widest text-blue-600 uppercase">Step 01: The Hook</div>
+                    <h3 class="text-3xl font-bold">Setting the Stage</h3>
+                    <div class="bg-gray-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                        <p class="text-sm text-gray-500 line-through mb-1">Old: "Buy Tickets"</p>
+                        <p class="font-semibold text-gray-900 text-lg">New: "One ticket. Three worlds."</p>
+                    </div>
+                    <p class="text-gray-600">The museum isn't just one building; it's an experience (History, Wildlife, Culture). The "Three Worlds" copy justifies the price point and sets expectations for the scale of the visit.</p>
+                </div>
+            </div>
+
+            <!-- Flow Step 2 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div class="space-y-6">
+                    <div class="text-sm font-bold tracking-widest text-blue-600 uppercase">Step 02: Selection</div>
+                    <h3 class="text-3xl font-bold">Bypassing the Gatekeeper</h3>
+                    <div class="bg-gray-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                        <p class="font-semibold text-gray-900">Primary Action: "Continue as guest"</p>
+                        <p class="text-sm text-gray-500 mt-1">Secondary Action: "Login with eCitizen"</p>
+                    </div>
+                    <p class="text-gray-600">By leading with "Continue as guest," we solve the #1 complaint on TripAdvisor: being forced to create a government account. We position eCitizen as an option for locals, not a barrier for tourists.</p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative w-64 md:w-72 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] border-[8px] border-gray-900 bg-white overflow-hidden">
+                        <img src="5.png" alt="Selection Screen" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow Step 3 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div class="order-2 md:order-1 flex justify-center">
+                    <div class="relative w-64 md:w-72 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] border-[8px] border-gray-900 bg-white overflow-hidden">
+                        <img src="7.png" alt="Payment Screen" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 space-y-6">
+                    <div class="text-sm font-bold tracking-widest text-blue-600 uppercase">Step 03: Trust Engineering</div>
+                    <h3 class="text-3xl font-bold">Localized Payment Logic</h3>
+                    <div class="bg-gray-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                        <p class="font-semibold text-gray-900">"Both options are instant and secure."</p>
+                    </div>
+                    <p class="text-gray-600">This line specifically addresses the "fear of corruption" or "card theft" mentioned in reviews. Using familiar logos for Visa, Mastercard, and M-PESA visually reinforces security. For the M-PESA path, we number the steps to manage user anxiety during the 5-second waiting period.</p>
+                </div>
+            </div>
+
+            <!-- Flow Step 4 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div class="space-y-6">
+                    <div class="text-sm font-bold tracking-widest text-blue-600 uppercase">Step 04: The Delivery</div>
+                    <h3 class="text-3xl font-bold">Designing for Dead Zones</h3>
+                    <div class="bg-gray-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                        <p class="font-semibold text-gray-900 flex items-center gap-2"><i data-lucide="download" class="w-4 h-4"></i> Download as PDF</p>
+                    </div>
+                    <p class="text-gray-600">Reviewers complained about a lack of Wi-Fi at the gate. The "Download as PDF" button is a critical UX feature disguised as copy—it ensures the user has an offline-ready version before they arrive at the museum's dead zones.</p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative w-64 md:w-72 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] border-[8px] border-gray-900 bg-white overflow-hidden">
+                        <img src="9.png" alt="Success Screen" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-bold mb-12">Projected Outcomes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6">
+                    <div class="text-5xl font-bold mb-2">&lt; 90s</div>
+                    <h4 class="text-lg font-medium text-blue-100 mb-2">Time-to-Ticket</h4>
+                    <p class="text-sm text-blue-200">Reduced from 45 minutes by removing the broken eCitizen mandatory flow.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-bold mb-2">+25%</div>
+                    <h4 class="text-lg font-medium text-blue-100 mb-2">Payment Success Rate</h4>
+                    <p class="text-sm text-blue-200">Offering M-PESA and Stripe/Card paths simultaneously without account requirements.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-bold mb-2">Zero</div>
+                    <h4 class="text-lg font-medium text-blue-100 mb-2">"I gave up" Reviews</h4>
+                    <p class="text-sm text-blue-200">Targeting elimination of abandonment by providing a clear, mobile-optimized guest checkout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-gray-900 py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center space-y-6">
+            <h3 class="text-2xl font-bold text-white">Ready to solve real user problems?</h3>
+            <p class="text-gray-400">Let's discuss how my product-focused design approach can help your team.</p>
+            <a href="mailto:your.email@example.com" class="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors">
+                Get in Touch
+            </a>
+            <div class="pt-8 mt-8 border-t border-gray-800 text-sm text-gray-500 flex justify-between items-center flex-col md:flex-row gap-4">
+                <p>© 2026 Your Name. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Simple scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
+    </script>
+</body>
