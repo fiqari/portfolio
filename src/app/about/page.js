@@ -197,10 +197,7 @@ export default function AboutPage() {
                   hello@wainainathomas.com
                 </a>
                 <a href="https://www.linkedin.com/in/wainaina-thomas" target="_blank" rel="noopener noreferrer" className="cta-link">
-                  LinkedIn
-                </a>
-                <a href="/Wainaina_Thomas_Resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-link">
-                  Resume ↗
+                  LinkedIn ↗
                 </a>
               </div>
             </FadeIn>

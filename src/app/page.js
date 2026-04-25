@@ -29,8 +29,8 @@ export default function Home() {
               <ProjectCard
                 id="project-nnm"
                 href="/nnm"
-                imageSrc="/assets/nnm/hero_mockup.png"
-                imageAlt="Nairobi National Museum redesign interface"
+                imageSrc="/assets/nnm/1.png"
+                imageAlt="Nairobi National Museum landing page showing ticket booking flow"
                 headline="Nairobi National Museum"
                 subtitle="Tourists couldn't buy tickets because the payment flow required a Kenyan government ID. I redesigned the entire purchase path."
                 tags={["Interaction Design", "Product Strategy"]}
@@ -40,8 +40,8 @@ export default function Home() {
               <ProjectCard
                 id="project-dill"
                 href="/dill"
-                imageSrc="/assets/dill/hero_mockup.png"
-                imageAlt="Dill deal aggregator interface"
+                imageSrc="/assets/dill/1.png"
+                imageAlt="Dill deal aggregator showing supermarket deals with KES pricing"
                 headline="Dill"
                 subtitle="Four supermarkets publish weekly deals separately. I built a PWA that pulls them into one screen — no merchant portal needed."
                 tags={["Product Design", "PWA", "Live Product"]}

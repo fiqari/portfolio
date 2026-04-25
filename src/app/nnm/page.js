@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import ScreenFlow from "@/components/ScreenFlow";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -30,6 +31,17 @@ export default function CaseStudyNNM() {
       title: "Designed at 390px first",
       body: "Every review described the same scene: someone standing outside the museum on their phone, on 3G, trying to buy a ticket. That's the device context that matters. I designed at mobile width from the first screen and scaled up.",
     },
+  ];
+
+  const ticketFlowScreens = [
+    { src: "/assets/nnm/1.png", alt: "Museum landing page with 'Buy Tickets' CTA", label: "Landing" },
+    { src: "/assets/nnm/2.png", alt: "Visitor type selection — Citizen, Resident, International", label: "Visitor type" },
+    { src: "/assets/nnm/3.png", alt: "Ticket selection with upfront pricing", label: "Select tickets" },
+    { src: "/assets/nnm/4.png", alt: "Guest information — name and email only", label: "Guest info" },
+    { src: "/assets/nnm/5.png", alt: "Payment method selection — Card or M-Pesa", label: "Payment method" },
+    { src: "/assets/nnm/7.png", alt: "Card payment details entry", label: "Card details" },
+    { src: "/assets/nnm/6.png", alt: "M-Pesa mobile payment flow", label: "M-Pesa option" },
+    { src: "/assets/nnm/9.png", alt: "QR code ticket confirmation ready to show at entrance", label: "Confirmation" },
   ];
 
   return (
@@ -63,13 +75,13 @@ export default function CaseStudyNNM() {
           </div>
         </section>
 
-        {/* HERO IMAGE */}
+        {/* HERO IMAGE — real museum landing page */}
         <section className="container">
           <FadeIn delay={0.3}>
             <div className="case-image">
               <Image
-                src="/assets/nnm/hero_mockup.png"
-                alt="Nairobi National Museum redesigned ticketing flow on mobile"
+                src="/assets/nnm/1.png"
+                alt="Nairobi National Museum landing page showing the museum entrance and 'Buy Tickets' button"
                 width={1600}
                 height={900}
                 priority
@@ -78,7 +90,7 @@ export default function CaseStudyNNM() {
           </FadeIn>
         </section>
 
-        {/* CONTENT */}
+        {/* THE PROBLEM */}
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
@@ -86,6 +98,9 @@ export default function CaseStudyNNM() {
               <h2 className="case-section__title">
                 Visitors arrived ready to pay and left without entering.
               </h2>
+              <p className="case-section__text">
+                The Nairobi National Museum holds one of Africa's most significant palaeontological collections, including hominid fossils that are critical to understanding human evolution. It receives both domestic and international visitors year-round.
+              </p>
               <div className="callout">
                 <p>
                   "It is extremely difficult to buy a ticket as a foreigner. They force you to register a national account online."
@@ -94,12 +109,13 @@ export default function CaseStudyNNM() {
                 </p>
               </div>
               <p className="case-section__text">
-                Nairobi National Museum holds one of East Africa's most important natural history collections. For most of 2024, tourists who tried to buy a ticket online were turned away. Not by a bad button or confusing layout. By a government payment gateway that required a Kenyan eCitizen identity account to process any transaction. An international visitor cannot create one in an afternoon. They just leave.
+                For most of 2024, tourists who tried to buy a ticket online were turned away. Not by a bad button or confusing layout. By a government payment gateway that required a Kenyan eCitizen identity account to process any transaction. An international visitor cannot create one in an afternoon. They just leave.
               </p>
             </FadeIn>
           </div>
         </section>
 
+        {/* THE DIAGNOSIS */}
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
@@ -110,6 +126,61 @@ export default function CaseStudyNNM() {
               <p className="case-section__text">
                 Redesigning button colours or cleaning up the visual hierarchy changes nothing. The eCitizen requirement sits upstream of the interface. The only design intervention that matters is removing that dependency and replacing it with a flow any visitor can complete on their phone.
               </p>
+
+              {/* BEFORE / AFTER COMPARISON */}
+              <div className="flow-compare">
+                <div className="flow-compare__side flow-compare__side--before">
+                  <p className="flow-compare__heading">Original flow</p>
+                  <div className="flow-compare__steps">
+                    <div className="flow-compare__step">
+                      <span className="flow-compare__step-num">1</span>
+                      <span>Visit museum website</span>
+                    </div>
+                    <div className="flow-compare__step">
+                      <span className="flow-compare__step-num">2</span>
+                      <span>Click "Buy Tickets"</span>
+                    </div>
+                    <div className="flow-compare__step">
+                      <span className="flow-compare__step-num">3</span>
+                      <span>Redirect to eCitizen portal</span>
+                    </div>
+                    <div className="flow-compare__step flow-compare__step--blocked">
+                      <span className="flow-compare__step-num">4</span>
+                      <span>Create eCitizen account (requires Kenyan ID)</span>
+                    </div>
+                    <div className="flow-compare__step flow-compare__step--blocked">
+                      <span className="flow-compare__step-num">5</span>
+                      <span>Verify identity</span>
+                    </div>
+                    <div className="flow-compare__step flow-compare__step--blocked">
+                      <span className="flow-compare__step-num">6</span>
+                      <span>Return to ticketing flow</span>
+                    </div>
+                    <div className="flow-compare__step flow-compare__step--blocked">
+                      <span className="flow-compare__step-num">7</span>
+                      <span>Complete payment</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flow-compare__side flow-compare__side--after">
+                  <p className="flow-compare__heading">Redesigned flow</p>
+                  <div className="flow-compare__steps">
+                    <div className="flow-compare__step">
+                      <span className="flow-compare__step-num">1</span>
+                      <span>Select visitor type and tickets</span>
+                    </div>
+                    <div className="flow-compare__step">
+                      <span className="flow-compare__step-num">2</span>
+                      <span>Enter name + email (guest checkout)</span>
+                    </div>
+                    <div className="flow-compare__step">
+                      <span className="flow-compare__step-num">3</span>
+                      <span>Pay by card or M-Pesa → receive QR ticket</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </section>
@@ -134,11 +205,30 @@ export default function CaseStudyNNM() {
             <div className="case-image" style={{ marginTop: 'var(--space-8)' }}>
               <Image
                 src="/assets/nnm/3.png"
-                alt="Ticket selection screen showing resident and non-resident pricing upfront"
+                alt="Ticket selection screen showing Citizen, Resident, and International visitor types with upfront pricing"
                 width={1600}
                 height={800}
               />
+              <p className="case-image__caption">Pricing is visible before any personal information is requested. The visitor type segmentation (Citizen / Resident / International) determines the rate immediately.</p>
             </div>
+          </FadeIn>
+        </section>
+
+        {/* FULL TICKET FLOW */}
+        <section className="case-section container">
+          <div className="narrow">
+            <FadeIn>
+              <p className="case-section__label">04 — The complete flow</p>
+              <h2 className="case-section__title">
+                Landing to QR code in under two minutes.
+              </h2>
+              <p className="case-section__text">
+                The redesigned flow takes a visitor from the museum landing page to a scannable QR ticket in 3 steps. The entire journey is designed for a 390px screen on a 3G connection — the actual device context described in dozens of TripAdvisor reviews.
+              </p>
+            </FadeIn>
+          </div>
+          <FadeIn>
+            <ScreenFlow screens={ticketFlowScreens} />
           </FadeIn>
         </section>
 
@@ -146,12 +236,12 @@ export default function CaseStudyNNM() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <p className="case-section__label">04 — Visual language</p>
+              <p className="case-section__label">05 — Visual language</p>
               <h2 className="case-section__title">
                 The identity needs to earn the collection.
               </h2>
               <p className="case-section__text">
-                A tourist clicking a link in their Nairobi hotel room has about five seconds to decide if this place is worth their afternoon. The original site gave them nothing to work with — unstyled government components with no visual identity. I paired heavy serifs with a deep institutional red to signal what the museum actually is: a place that holds some of the most significant fossils and artefacts on the continent.
+                A tourist clicking a link in their Nairobi hotel room has about five seconds to decide if this place is worth their afternoon. The original site gave them nothing to work with — unstyled government components with no visual identity. I paired heavy serifs (Cormorant Garamond) with a deep institutional red (#8B1A1A) to signal what the museum actually is: a place that holds some of the most significant fossils and artefacts on the continent.
               </p>
             </FadeIn>
           </div>
@@ -159,12 +249,53 @@ export default function CaseStudyNNM() {
             <div className="case-image">
               <Image
                 src="/assets/nnm/system_board.png"
-                alt="Design system board showing serif typography and institutional colour palette"
+                alt="Design system board showing Cormorant Garamond typography, institutional red colour palette, button states, and icon set"
                 width={1600}
                 height={800}
               />
+              <p className="case-image__caption">UI design system — Cormorant Garamond headings, institutional red palette, and component states.</p>
             </div>
           </FadeIn>
+        </section>
+
+        {/* OUTCOME */}
+        <section className="case-section container">
+          <div className="narrow">
+            <FadeIn>
+              <p className="case-section__label">06 — Outcome</p>
+              <h2 className="case-section__title">
+                What this analysis produced.
+              </h2>
+              <p className="case-section__text">
+                This is an unsolicited redesign — I didn't have access to the museum's internal data or engineering team. The value of this project lies in the analytical methodology, not a shipped product.
+              </p>
+              <div className="outcome">
+                <p className="outcome__title">Research & design outputs</p>
+                <div className="outcome__items">
+                  <div className="outcome__item">
+                    <span className="outcome__bullet"></span>
+                    <p className="outcome__text">Analysed 18 months of TripAdvisor reviews to identify a consistent structural failure pattern — the eCitizen dependency blocking international ticket purchases</p>
+                  </div>
+                  <div className="outcome__item">
+                    <span className="outcome__bullet"></span>
+                    <p className="outcome__text">Distinguished between surface-level UX issues and the upstream policy dependency that caused them — reframing the problem from "bad UI" to "broken architecture"</p>
+                  </div>
+                  <div className="outcome__item">
+                    <span className="outcome__bullet"></span>
+                    <p className="outcome__text">Designed a complete guest checkout flow reducing the purchase path from 7+ steps (with a hard blocker at step 4) to 3 steps with no account requirement</p>
+                  </div>
+                  <div className="outcome__item">
+                    <span className="outcome__bullet"></span>
+                    <p className="outcome__text">Built a visual identity system (Cormorant Garamond, institutional red) that positions the museum as a cultural institution rather than a government service</p>
+                  </div>
+                  <div className="outcome__item">
+                    <span className="outcome__bullet"></span>
+                    <p className="outcome__text">Included dual payment rails — international card payments (via Stripe) and M-Pesa for domestic visitors — matching how people actually pay in Kenya</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </section>
 
         {/* REFLECTION */}
@@ -173,9 +304,12 @@ export default function CaseStudyNNM() {
             <FadeIn>
               <div className="case-reflection">
                 <p className="case-section__label">Reflection</p>
-                <h2 className="case-section__title">What this isn't.</h2>
+                <h2 className="case-section__title">What I'd take forward.</h2>
                 <p className="case-section__text">
-                  This is an unsolicited redesign. I didn't interview museum visitors. I don't know whether NNM's backend infrastructure could support a guest checkout flow tomorrow. Those are real limitations. What I did do: I looked at 18 months of public evidence, identified a pattern that pointed to a specific structural failure, and proposed an intervention that addresses the root cause — not the surface.
+                  This project taught me that the most impactful design decisions often happen before any screen is drawn. Identifying the eCitizen dependency as the root cause — rather than treating the symptoms with better buttons or clearer copy — changed what "redesign" meant entirely. It wasn't about making the existing flow prettier. It was about removing the thing that made the flow impossible.
+                </p>
+                <p className="case-section__text">
+                  If I were to continue this work, the next step would be user testing with actual tourists at the museum entrance — observing the real device context, the real connection quality, and the real decision-making process. The TripAdvisor reviews gave me a starting point, but they're a proxy for observation, not a replacement for it.
                 </p>
               </div>
             </FadeIn>
