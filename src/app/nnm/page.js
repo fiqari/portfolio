@@ -241,7 +241,7 @@ export default function CaseStudyNNM() {
                 The identity needs to earn the collection.
               </h2>
               <p className="case-section__text">
-                A tourist clicking a link in their Nairobi hotel room has about five seconds to decide if this place is worth their afternoon. The original site gave them nothing to work with — unstyled government components with no visual identity. I paired heavy serifs (Cormorant Garamond) with a deep institutional red (#8B1A1A) to signal what the museum actually is: a place that holds some of the most significant fossils and artefacts on the continent.
+                A tourist clicking a link in their Nairobi hotel room has about five seconds to decide if this place is worth their afternoon. The original site gave them nothing to work with — unstyled government components with no visual identity. I used Josefin Sans for a clean, modern display feel paired with a deep institutional red (#8B1A1A) to signal what the museum actually is: a place that holds some of the most significant fossils and artefacts on the continent.
               </p>
             </FadeIn>
           </div>
@@ -249,11 +249,11 @@ export default function CaseStudyNNM() {
             <div className="case-image">
               <Image
                 src="/assets/nnm/system_board.png"
-                alt="Design system board showing Cormorant Garamond typography, institutional red colour palette, button states, and icon set"
+                alt="Design system board showing Josefin Sans typography, institutional red colour palette, button states, and icon set"
                 width={1600}
                 height={800}
               />
-              <p className="case-image__caption">UI design system — Cormorant Garamond headings, institutional red palette, and component states.</p>
+              <p className="case-image__caption">UI design system — Josefin Sans headings, institutional red palette, and component states.</p>
             </div>
           </FadeIn>
         </section>
@@ -286,7 +286,7 @@ export default function CaseStudyNNM() {
                   </div>
                   <div className="outcome__item">
                     <span className="outcome__bullet"></span>
-                    <p className="outcome__text">Built a visual identity system (Cormorant Garamond, institutional red) that positions the museum as a cultural institution rather than a government service</p>
+                    <p className="outcome__text">Built a visual identity system (Josefin Sans, institutional red) that positions the museum as a cultural institution rather than a government service</p>
                   </div>
                   <div className="outcome__item">
                     <span className="outcome__bullet"></span>
