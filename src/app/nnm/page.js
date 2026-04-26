@@ -298,6 +298,18 @@ export default function CaseStudyNNM() {
           </div>
         </section>
 
+        {/* ACCESSIBILITY */}
+        <section className="case-section container">
+          <div className="narrow">
+            <FadeIn>
+              <p className="case-section__label">Accessibility</p>
+              <p className="case-section__text">
+                All interactive elements meet WCAG 2.1 AA contrast requirements against both the white card surfaces and the light grey page background. Button hit areas are minimum 44×44px — critical for a flow designed to be used on a phone in direct sunlight outside a museum entrance. The entire ticket purchase flow is navigable by keyboard, and form inputs use explicit labels for screen reader compatibility.
+              </p>
+            </FadeIn>
+          </div>
+        </section>
+
         {/* REFLECTION */}
         <section className="case-section container">
           <div className="narrow">

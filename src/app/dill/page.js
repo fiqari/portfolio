@@ -124,6 +124,32 @@ export default function CaseStudyDill() {
                 The actual data pipeline — retailer sites are scraped weekly via GitHub Actions, normalised, and served through Firestore.
               </p>
             </FadeIn>
+            <FadeIn>
+              <div className="data-example">
+                <div className="data-example__side">
+                  <p className="data-example__heading">Raw scrape (Carrefour)</p>
+                  <pre className="data-example__code">{'"Ariel Power Gel 2L\n'
++ 'Was KES 1,299 Now KES 899\n'
++ 'Valid: 15-21 Apr\n'
++ 'Category: HOME CARE"'}</pre>
+                </div>
+                <div className="data-example__arrow">→</div>
+                <div className="data-example__side">
+                  <p className="data-example__heading">Normalised output</p>
+                  <pre className="data-example__code">{'{ "name": "Ariel Power Gel",\n'
++ '  "size": "2L",\n'
++ '  "price": 899,\n'
++ '  "was": 1299,\n'
++ '  "pct": 31,\n'
++ '  "retailer": "carrefour",\n'
++ '  "category": "household",\n'
++ '  "expires": "2026-04-21" }'}</pre>
+                </div>
+              </div>
+              <p className="case-image__caption" style={{ paddingLeft: 'var(--space-4)' }}>
+                Each retailer has different formatting, units, and date conventions. The normalisation layer standardises everything into a consistent schema the PWA can render without per-retailer logic.
+              </p>
+            </FadeIn>
           </div>
         </section>
 
@@ -210,6 +236,18 @@ export default function CaseStudyDill() {
               </div>
               <p className="case-section__text">
                 <strong>Next steps:</strong> Validate the core assumption — that shoppers check deals <em>before</em> leaving home and rely on cached data at the store. This assumption shaped the entire offline architecture. Whether it reflects real behaviour, or whether people want live data and would rather wait for a connection, is the open question that determines the next iteration.
+              </p>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ACCESSIBILITY */}
+        <section className="case-section container">
+          <div className="narrow">
+            <FadeIn>
+              <p className="case-section__label">Accessibility</p>
+              <p className="case-section__text">
+                Deal cards use sufficient contrast for price text against card backgrounds, meeting WCAG 2.1 AA requirements. All interactive elements have minimum 44×44px touch targets for reliable use on mid-range Android devices. The app respects <code>prefers-reduced-motion</code> for users who have disabled animations at the OS level, and all navigation is keyboard-accessible.
               </p>
             </FadeIn>
           </div>
