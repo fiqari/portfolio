@@ -32,7 +32,7 @@ export default function Home() {
                 imageSrc="/assets/nnm/1.png"
                 imageAlt="Nairobi National Museum landing page showing ticket booking flow"
                 headline="Nairobi National Museum"
-                subtitle="Tourists couldn't buy tickets because the payment flow required a Kenyan government ID. I redesigned the entire purchase path."
+                subtitle="From a 45-minute queue to a 45-second flow. I redesigned the entire purchase path for the Nairobi National Museum."
                 tags={["Interaction Design", "Product Strategy"]}
               />
             </FadeIn>
@@ -43,7 +43,7 @@ export default function Home() {
                 imageSrc="/assets/dill/1.png"
                 imageAlt="Dill deal aggregator showing supermarket deals with KES pricing"
                 headline="Dill"
-                subtitle="Four supermarkets publish weekly deals separately. I built a PWA that pulls them into one screen — no merchant portal needed."
+                subtitle="Four supermarkets, one screen, no merchant portal. A live PWA I designed and built from the data pipeline to the last pixel."
                 tags={["Product Design", "PWA", "Live Product"]}
               />
             </FadeIn>

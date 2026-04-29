@@ -1,0 +1,28 @@
+DILL: MISSION STATEMENT & PRODUCT STRATEGY
+Stealth-Mode Executive Summary
+
+1. THE VISION
+Dill is Nairobi’s smartest B2B/B2C marketplace for grocery deals. It is designed to bridge the gap between price-conscious Kenyan shoppers and supermarket marketing managers, evolving from a simple data aggregator into a dynamic, location-aware "social media for deals."
+
+2. THE PROBLEM
+Currently, grocery deal discovery in Kenya is highly fragmented. Consumers are forced to manually hunt for discounts across disparate supermarket platforms. Conversely, supermarkets (such as Naivas, Quickmart, and Carrefour) rely on expensive, low-conversion marketing channels—broadcasting via TV, social media ads, and limited SMS lists—to reach an audience that is already actively seeking savings. 
+
+3. THE PHASED ARCHITECTURE
+
+Phase 1: Aggregation (The MVP)
+The foundational phase focuses on data normalisation. Dill aggregates heterogeneous, scraped deal data from major supermarket websites into a unified, user-centric mobile interface. The goal is to provide immediate value to the user by centralising fragmented savings data. 
+*Note: All scraping scripts and data normalisation logic remain proprietary.*
+
+Phase 2: The Stickiness Pivot (B2C User Retention)
+Dill transitions from an aggregator to a sticky ecosystem. This phase introduces:
+- Subscriptions: Users can subscribe to verified supermarket channels or specific product categories (e.g., 'Dairy' or 'Electronics').
+- Location Awareness: Utilising geo-fencing to push real-time alerts for flash deals when a user is within close proximity (e.g., 500 metres) of a specific supermarket branch.
+- Predictive Discovery: Implementing ML-powered conceptual logic to learn a user's grocery habits, surfacing highly relevant 'Dill of the Day' matches to maximise conversion rates.
+
+Phase 3: The Scalability Pivot (B2B SaaS Monetisation)
+The final evolution transforms Dill into a self-sustaining commercial channel. Supermarkets are provided with a streamlined B2B SaaS mobile dashboard, empowering them to bypass traditional ad spend. Store managers can instantly draft, target, and publish deals directly to their subscribed Dill audience in under 60 seconds. 
+*Note: Specific monetisation metrics, pricing tiers, and commission structures are unannounced and treated as illustrative concepts in all public-facing materials.*
+
+4. THE DESIGN PHILOSOPHY
+"Products that work before they look good." 
+Dill is built on a foundation of rigorous data logic, ensuring seamless functionality from the backend data model to the final high-fidelity pixel. The user interface aims for a 7-Eleven level of commercial polish—clean, conversion-focused, and incredibly fast—ensuring that complex ML and data architecture translates into a frictionless, empowering experience for both the shopper and the supermarket.
