@@ -31,7 +31,7 @@ export default function CaseStudyDill() {
                 Four retailers. Three marketplace sides. One unified interface.
               </h1>
               <p className="hero__subtitle mb-8">
-                Dill is Nairobi's smartest B2B/B2C marketplace for grocery deals. I designed and built it from the ground up to bridge the gap between price-conscious shoppers and supermarket marketing managers.
+                Dill is Nairobi&apos;s smartest B2B/B2C marketplace for grocery deals. I designed and built it from the ground up to bridge the gap between price-conscious shoppers and supermarket marketing managers.
               </p>
               
               <div className="hero-meta mb-12 flex flex-wrap gap-6">
@@ -163,10 +163,10 @@ export default function CaseStudyDill() {
                   </div>
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                     <h4 className="font-bold text-gray-900 mb-2">Subscriptions & Channels</h4>
-                    <p className="text-sm text-gray-600">Users can subscribe to verified supermarket channels or high-intent product categories (e.g., 'Dairy' or 'Baby') to curate their feed.</p>
+                    <p className="text-sm text-gray-600">Users can subscribe to verified supermarket channels or high-intent product categories (e.g., &apos;Dairy&apos; or &apos;Baby&apos;) to curate their feed.</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                    <h4 className="font-bold text-gray-900 mb-2">Predictive "Dill of the Day"</h4>
+                    <h4 className="font-bold text-gray-900 mb-2">Predictive &quot;Dill of the Day&quot;</h4>
                     <p className="text-sm text-gray-600">ML-powered logic learns grocery habits to surface highly relevant matches, maximising conversion rates before the user even searches.</p>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export default function CaseStudyDill() {
               </div>
 
               <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 my-8">
-                <h4 className="font-bold text-emerald-900 mb-2">The "Magic Upload" Flow</h4>
+                <h4 className="font-bold text-emerald-900 mb-2">The &quot;Magic Upload&quot; Flow</h4>
                 <p className="text-sm text-emerald-800">
                   To eliminate B2B friction, the dashboard features an OCR-powered upload system. A store manager snaps a photo of a physical promo flyer, and the system automatically extracts the product name, original price, and discount percentage to auto-fill the digital listing.
                 </p>
@@ -230,7 +230,7 @@ export default function CaseStudyDill() {
                 <p className="case-section__label">Builder Retrospective</p>
                 <h2 className="case-section__title">Products that work before they look good.</h2>
                 <p className="case-section__text">
-                  Dill proves the ability to design an ecosystem end-to-end. It isn't just a UI prototype; it's a foundation of rigorous data logic ensuring seamless functionality from the backend scraping engine to the final high-fidelity pixel.
+                  Dill proves the ability to design an ecosystem end-to-end. It isn&apos;t just a UI prototype; it&apos;s a foundation of rigorous data logic ensuring seamless functionality from the backend scraping engine to the final high-fidelity pixel.
                 </p>
                 <p className="case-section__text">
                   The interface aims for a 7-Eleven level of commercial polish—clean, conversion-focused, and incredibly fast. It demonstrates that complex architecture and business model scaling can be translated into a frictionless, empowering experience for both sides of the marketplace.

@@ -58,13 +58,13 @@ export default function AboutPage() {
 
             <FadeIn delay={0.1}>
               <p className="about-hero__intro">
-                I'm a product designer who works end-to-end — from the first 
+                I&apos;m a product designer who works end-to-end — from the first 
                 conversation about what the product should do, through the 
                 information architecture and interaction model, to the final 
                 interface people actually use.
               </p>
               <p className="about-hero__intro">
-                The work I'm most drawn to has real constraints: limited 
+                The work I&apos;m most drawn to has real constraints: limited 
                 budgets, unfamiliar markets, infrastructure that pushes back. 
                 Those projects force better decisions. My two current case 
                 studies — a supermarket deal aggregator and a museum ticketing 
@@ -86,7 +86,7 @@ export default function AboutPage() {
               <p className="case-section__text">
                 I make product-level calls — what to build, what to cut, 
                 how the system should behave — and then design the screens 
-                that make those decisions tangible. I don't hand off wireframes 
+                that make those decisions tangible. I don&apos;t hand off wireframes 
                 and walk away. I care about the spacing, the transitions, 
                 the way a loading state feels at 250ms.
               </p>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 Remote is how I work, not something I tolerate
               </h2>
               <p className="case-section__text">
-                I've worked in distributed setups my entire design career. 
+                I&apos;ve worked in distributed setups my entire design career. 
                 I have specific habits that make this reliable regardless 
                 of where the rest of the team sits.
               </p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                 <div className="about-remote-card">
                   <h3 className="about-remote-card__title">Written-first</h3>
                   <p className="about-remote-card__body">
-                    Every design decision lives in Notion or Figma. If it's not written down, it didn't happen.
+                    Every design decision lives in Notion or Figma. If it&apos;s not written down, it didn&apos;t happen.
                   </p>
                 </div>
                 <div className="about-remote-card">
@@ -173,7 +173,7 @@ export default function AboutPage() {
                 <div className="about-remote-card">
                   <h3 className="about-remote-card__title">Visible progress</h3>
                   <p className="about-remote-card__body">
-                    Weekly design updates in Slack. Nobody should need to ask "where are we on this?".
+                    Weekly design updates in Slack. Nobody should need to ask &quot;where are we on this?&quot;.
                   </p>
                 </div>
               </div>
@@ -181,28 +181,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* --- CTA --- */}
-        <section className="container">
-          <div className="cta-section narrow">
-            <FadeIn>
-              <h2 className="case-section__title">Let's talk</h2>
-              <p className="case-section__text">
-                I'm looking for product design roles where the decisions 
-                carry weight — where I can own the problem end-to-end, 
-                not just push pixels on a ticket. If that sounds like 
-                what you're hiring for, reach out.
-              </p>
-              <div className="cta-links">
-                <a href="mailto:hello@wainainathomas.com" className="cta-link">
-                  hello@wainainathomas.com
-                </a>
-                <a href="https://www.linkedin.com/in/wainaina-thomas" target="_blank" rel="noopener noreferrer" className="cta-link">
-                  LinkedIn ↗
-                </a>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
+
       </main>
 
       <Footer />

@@ -28,23 +28,19 @@ export default function Navigation() {
             Work
           </Link>
           <Link
-            href="/dill"
-            className={`nav__link nav__link--case ${pathname === "/dill" ? "nav__link--active" : ""}`}
-          >
-            Dill
-          </Link>
-          <Link
-            href="/nnm"
-            className={`nav__link nav__link--case ${pathname === "/nnm" ? "nav__link--active" : ""}`}
-          >
-            NNM
-          </Link>
-          <Link
             href="/about"
             className={`nav__link ${pathname === "/about" ? "nav__link--active" : ""}`}
           >
             About
           </Link>
+          <a
+            href="/wainaina_thomas_resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav__link nav__link--resume"
+          >
+            Resume
+          </a>
         </div>
       </div>
     </nav>

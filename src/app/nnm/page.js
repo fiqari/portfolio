@@ -71,7 +71,7 @@ export default function CaseStudyNNM() {
               <span className="phase-header__meta">Problem Framing</span>
               
               <p className="case-section__text">
-                I didn't need to conduct user interviews to find the problem. Eighteen months of TripAdvisor reviews told the exact same story: the museum itself is world-class, but the payment gateway is a revenue leak.
+                I didn&apos;t need to conduct user interviews to find the problem. Eighteen months of TripAdvisor reviews told the exact same story: the museum itself is world-class, but the payment gateway is a revenue leak.
               </p>
 
               <div className="grid gap-4 my-8">
@@ -90,7 +90,7 @@ export default function CaseStudyNNM() {
               </div>
 
               <p className="case-section__text">
-                The government had mandated that all national park and museum fees go through 'eCitizen', a centralised portal designed for citizens accessing civil services. Forcing an international tourist standing outside a museum to create a government profile is a severe mismatch of intent and friction.
+                The government had mandated that all national park and museum fees go through &apos;eCitizen&apos;, a centralised portal designed for citizens accessing civil services. Forcing an international tourist standing outside a museum to create a government profile is a severe mismatch of intent and friction.
               </p>
               
               <figure className="case-image my-12">
@@ -111,7 +111,7 @@ export default function CaseStudyNNM() {
               <span className="phase-header__meta">Strategic Solution 1</span>
               
               <p className="case-section__text">
-                The root cause wasn't bad UX; it was a bad policy dependency. The interface assumed the user's primary goal was "logging into the government portal," rather than "buying a ticket."
+                The root cause wasn&apos;t bad UX; it was a bad policy dependency. The interface assumed the user&apos;s primary goal was &quot;logging into the government portal,&quot; rather than &quot;buying a ticket.&quot;
               </p>
 
               <AnnotatedImage 
@@ -143,10 +143,10 @@ export default function CaseStudyNNM() {
               <span className="phase-header__meta">Strategic Solution 2</span>
               
               <p className="case-section__text">
-                The second failure point was payment processing. International cards were failing on the local gateway, and tourists generally don't have Kenyan mobile money (M-Pesa) accounts. 
+                The second failure point was payment processing. International cards were failing on the local gateway, and tourists generally don&apos;t have Kenyan mobile money (M-Pesa) accounts. 
               </p>
               <p className="case-section__text">
-                My solution was to split the payment rails visually and technologically based on the user's context.
+                My solution was to split the payment rails visually and technologically based on the user&apos;s context.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 my-12">
@@ -161,7 +161,7 @@ export default function CaseStudyNNM() {
                   </div>
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                     <h4 className="font-bold text-gray-900 mb-2">Rail B: Stripe (Card)</h4>
-                    <p className="text-sm text-gray-600">For internationals, standardising on a globally trusted gateway like Stripe prevents the "card declined by foreign bank" errors that were plaguing the original system.</p>
+                    <p className="text-sm text-gray-600">For internationals, standardising on a globally trusted gateway like Stripe prevents the &quot;card declined by foreign bank&quot; errors that were plaguing the original system.</p>
                   </div>
                 </div>
               </div>
@@ -225,7 +225,7 @@ export default function CaseStudyNNM() {
                   This project reinforced that the highest-leverage design work happens before Figma is even opened. The original portal was aesthetically fine, but operationally broken. 
                 </p>
                 <p className="case-section__text">
-                  By treating the problem as a business logic failure rather than a UI failure, I was able to design a system that works exactly how the end-user expects, while still fulfilling the government's requirement for digitised revenue collection. The architecture scales seamlessly to any other national park or public utility facing the same bottleneck.
+                  By treating the problem as a business logic failure rather than a UI failure, I was able to design a system that works exactly how the end-user expects, while still fulfilling the government&apos;s requirement for digitised revenue collection. The architecture scales seamlessly to any other national park or public utility facing the same bottleneck.
                 </p>
               </div>
             </FadeIn>

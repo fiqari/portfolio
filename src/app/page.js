@@ -17,7 +17,7 @@ export default function Home() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="hero__subtitle">
-              Product designer. I figure out what to build, then I build it — end-to-end, from the data model to the last pixel.
+              Product Designer & Builder. I focus on B2C mobile experiences — bridging the gap between complex data and frictionless interfaces.
             </p>
           </FadeIn>
         </section>
@@ -50,20 +50,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Strip */}
-        <section className="container" id="contact">
-          <div className="contact-strip">
-            <FadeIn>
-              <p className="contact-strip__heading">Available for work · UTC+3</p>
-              <a href="mailto:hello@wainainathomas.com" className="contact-strip__email">
-                hello@wainainathomas.com
-              </a>
-              <p className="contact-strip__meta">
-                Based in Nairobi. I overlap 4+ hours daily with Europe and the US East Coast. Async-first — I write things down, record walkthroughs, and ship without waiting for a meeting.
-              </p>
-            </FadeIn>
-          </div>
-        </section>
       </main>
 
       <Footer />
