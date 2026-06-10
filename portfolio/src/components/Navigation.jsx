@@ -33,8 +33,15 @@ export default function Navigation() {
           >
             About
           </Link>
+          <Link
+            href="/healthherald"
+            className={`nav__link ${pathname.startsWith("/healthherald") ? "nav__link--active" : ""}`}
+          >
+            Writing
+          </Link>
           <a
             href="/wainaina_thomas_resume.pdf"
+
             target="_blank"
             rel="noopener noreferrer"
             className="nav__link nav__link--resume"
