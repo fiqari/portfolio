@@ -1,27 +1,14 @@
-import { Playfair_Display, Lora } from "next/font/google";
 import "./blog.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
 export const metadata = {
-  title: "Health Herald — Health Policy & Systems Research",
-  description: "In-depth health policy analysis and health system design, written by Wainaina Thomas.",
+  title: "Health Herald — Health Policy & Equity",
+  description: "A publication dedicated to unpacking the complex mechanics of health policy, digital healthcare infrastructure, and devolved health governance systems in Kenya.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${lora.variable} blog-theme`}>
+      <body className="blog-theme">
         {children}
       </body>
     </html>

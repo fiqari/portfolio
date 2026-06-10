@@ -33,12 +33,14 @@ export default function Navigation() {
           >
             About
           </Link>
-          <Link
-            href="/healthherald"
-            className={`nav__link ${pathname.startsWith("/healthherald") ? "nav__link--active" : ""}`}
+          <a
+            href="https://healthherald.wainaina.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav__link"
           >
-            Writing
-          </Link>
+            Writing ↗
+          </a>
           <a
             href="/wainaina_thomas_resume.pdf"
 

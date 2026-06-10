@@ -7,9 +7,7 @@ import { posts } from "./posts-data";
 export default function BlogHome() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Newsletter Submit
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
@@ -17,187 +15,167 @@ export default function BlogHome() {
     setEmail("");
   };
 
-  // Get unique categories for filtering
-  const categories = ["All", ...Array.from(new Set(posts.map((p) => p.category)))];
-
-  // Filter posts
-  const filteredPosts = selectedCategory === "All"
-    ? posts
-    : posts.filter((p) => p.category === selectedCategory);
-
-  // Spotlights the newest post as featured, and lists the rest
+  // The first post is always featured on the front page
   const featuredPost = posts[0];
-  const secondaryPosts = filteredPosts.filter((p) => p.slug !== featuredPost.slug);
+  const secondaryPosts = posts.slice(1);
+
+  // Formatting date for dateline
+  const currentFormattedDate = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <>
-      {/* Blog Navigation Header */}
-      <header className="blog-header">
-        <div className="blog-container blog-header__inner">
-          <Link href="/" className="blog-header__logo">
-            Health<span>Herald</span>.
+      {/* Blog Specific Header */}
+      <header className="blog-nav">
+        <div className="blog-width-limit blog-nav__inner">
+          <Link href="/" className="blog-nav__logo">
+            Health<span>Herald</span>
           </Link>
-          <nav className="blog-header__nav">
-            <Link href="/about" className="blog-header__link">
-              About
-            </Link>
-            <a href="https://wainaina.tech" className="blog-header__link">
-              Portfolio ↗
+          <nav className="blog-nav__links">
+            <a href="https://wainaina.tech/about" className="blog-nav__link">
+              Designer Bio
             </a>
-            <a href="#subscribe" className="blog-header__btn">
+            <a href="https://wainaina.tech" className="blog-nav__link">
+              Portfolio
+            </a>
+            <a href="#subscribe" className="blog-nav__btn">
               Subscribe
             </a>
           </nav>
         </div>
       </header>
 
-      <main className="blog-container">
-        {/* Editorial Publication Hero Banner */}
-        <section className="blog-hero">
-          <span className="blog-hero__tag">Health Policy & Systems</span>
-          <h1 className="blog-title blog-hero__title">Health Herald</h1>
-          <p className="blog-hero__subtitle">
-            Critical analysis of Universal Health Coverage, digital medical infrastructure, and devolution policy in Kenya.
+      <main className="blog-width-limit py-8">
+        {/* Broadsheet Masthead */}
+        <section className="masthead">
+          <span className="masthead__sub-label">Health Policy & Equity Analysis</span>
+          <h1 className="masthead__title">Health Herald</h1>
+          <p className="masthead__tagline">
+            Unpacking the friction of universal coverage, devolved systems, and transaction rails in East Africa.
           </p>
         </section>
 
-        {/* Featured Post Spotlight (Only shown if "All" is selected or the featured post fits the category) */}
-        {selectedCategory === "All" || featuredPost.category === selectedCategory ? (
-          <section className="featured-row">
-            <div className="post-featured">
-              <div className="post-meta">
-                <span className="post-meta__category">{featuredPost.category}</span>
-                <span>•</span>
-                <span>{featuredPost.date}</span>
-                <span>•</span>
-                <span>{featuredPost.readTime}</span>
-              </div>
-              <h2 className="blog-title post-featured__title">
-                <Link href={`/posts/${featuredPost.slug}`}>
-                  {featuredPost.title}
-                </Link>
-              </h2>
-              <p className="post-featured__excerpt">{featuredPost.excerpt}</p>
-              <Link href={`/posts/${featuredPost.slug}`} className="blog-header__link font-bold text-sm text-green-700 hover:text-black">
-                Read Article →
-              </Link>
-            </div>
+        {/* broadsheet volume details */}
+        <div className="dateline-bar">
+          <span className="dateline-bar__issue">Vol. I · No. 1</span>
+          <span>Nairobi, Kenya</span>
+          <span>{currentFormattedDate}</span>
+        </div>
+
+        {/* Broadsheet Editorial Grid */}
+        <div className="editorial-grid">
+          
+          {/* Left Column: Articles */}
+          <div className="editorial-grid__main">
             
-            {/* Quick newsletter subscription inline card */}
-            <div className="bg-stone-50 border border-stone-200/60 p-6 rounded-xl flex flex-col justify-between shadow-sm">
-              <div>
-                <h3 className="font-semibold text-stone-800 mb-2">Subscribe to Health Herald</h3>
-                <p className="text-xs text-stone-600 mb-4">
-                  Get high-fidelity systems analysis and design teardowns on health policy delivered straight to your inbox.
-                </p>
-              </div>
+            {/* Featured Post Spotlight */}
+            {featuredPost && (
+              <article className="featured-article">
+                <span className="featured-article__label">{featuredPost.category}</span>
+                <h2 className="featured-article__title">
+                  <Link href={`/posts/${featuredPost.slug}`}>
+                    {featuredPost.title}
+                  </Link>
+                </h2>
+                
+                <div className="featured-article__meta">
+                  <span className="featured-article__byline">By {featuredPost.author}</span>
+                  <span>•</span>
+                  <span>{featuredPost.date}</span>
+                  <span>•</span>
+                  <span>{featuredPost.readTime}</span>
+                </div>
+                
+                <p className="featured-article__excerpt">{featuredPost.excerpt}</p>
+                <Link href={`/posts/${featuredPost.slug}`} className="read-more-link">
+                  Read Analysis
+                </Link>
+              </article>
+            )}
+
+            <div className="broadsheet-double-rule">
+              <span className="secondary-section-title">Additional Policy Bulletins</span>
+            </div>
+
+            {/* Secondary articles */}
+            <div className="card-flow">
+              {secondaryPosts.map((post) => (
+                <article key={post.slug} className="editorial-card">
+                  <div className="editorial-card__meta">
+                    <span className="editorial-card__category">{post.category}</span>
+                    <span>{post.date} · {post.readTime}</span>
+                  </div>
+                  <h3 className="editorial-card__title">
+                    <Link href={`/posts/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="editorial-card__excerpt">{post.excerpt}</p>
+                  <Link href={`/posts/${post.slug}`} className="read-more-link">
+                    Read Analysis
+                  </Link>
+                </article>
+              ))}
+            </div>
+
+          </div>
+
+          {/* Right Column: Sidebar */}
+          <div className="editorial-sidebar">
+            
+            {/* Bloomberg Style Newsletter */}
+            <section id="subscribe" className="newsletter-box">
+              <h3 className="newsletter-box__title">The Dispatch</h3>
+              <p className="newsletter-box__desc">
+                High-fidelity design teardowns and health equity briefings. Direct to your inbox.
+              </p>
               {isSubscribed ? (
-                <p className="subscribe-success text-center">✓ Thank you for subscribing!</p>
+                <p className="newsletter-box__success">✓ Added to the registry list.</p>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
+                <form onSubmit={handleSubscribe}>
                   <input
                     type="email"
-                    placeholder="Type your email..."
+                    placeholder="Enter email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="p-3 border border-stone-200 rounded-md text-xs bg-white focus:outline-none focus:border-stone-400"
+                    className="newsletter-box__input"
                   />
-                  <button type="submit" className="bg-stone-900 text-white p-3 rounded-md text-xs font-semibold hover:bg-stone-800 transition">
-                    Subscribe
+                  <button type="submit" className="newsletter-box__btn">
+                    Register
                   </button>
                 </form>
               )}
-            </div>
-          </section>
-        ) : null}
+            </section>
 
-        {/* Category Filters Tabbar */}
-        <nav className="filter-tabs">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`filter-tab ${selectedCategory === cat ? "filter-tab--active" : ""}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </nav>
-
-        {/* Blog Post List Grid */}
-        <section className="posts-grid">
-          {secondaryPosts.length > 0 ? (
-            secondaryPosts.map((post) => (
-              <article key={post.slug} className="post-card">
-                <div className="post-meta">
-                  <span className="post-meta__category">{post.category}</span>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
+            {/* Author / Columnist bio */}
+            <section className="author-widget">
+              <h4 className="author-widget__title">The Columnist</h4>
+              <div className="author-widget__profile">
+                <div className="author-widget__avatar" aria-hidden="true">
+                  WT
                 </div>
-                <h3 className="blog-title post-card__title">
-                  <Link href={`/posts/${post.slug}`}>
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="post-card__excerpt">{post.excerpt}</p>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-xs text-stone-500">{post.date}</span>
-                  <Link href={`/posts/${post.slug}`} className="text-xs font-bold text-green-700 hover:text-black">
-                    Read Article →
-                  </Link>
+                <div className="author-widget__bio">
+                  <p>
+                    <strong>Wainaina Thomas</strong> is a Product Designer and Health Systems Researcher based in Nairobi. He works at the intersection of public utility design, low-bandwidth interfaces, and health equity infrastructure.
+                  </p>
                 </div>
-              </article>
-            ))
-          ) : (
-            selectedCategory !== "All" && (
-              <p className="text-stone-500 text-center py-12 col-span-2">No other posts found in this category.</p>
-            )
-          )}
-        </section>
+              </div>
+            </section>
 
-        {/* Large Centered Substack Subscription Box */}
-        <section id="subscribe" className="subscribe-card blog-narrow">
-          <h2 className="subscribe-card__title">Read health policy with product-first clarity</h2>
-          <p className="subscribe-card__desc">
-            No fluff. No generic policy briefs. We explore Universal Health Coverage, claims systems, devolution, and digital interfaces from constraints to pixels.
-          </p>
-          {isSubscribed ? (
-            <div className="subscribe-success">
-              <span className="block text-2xl mb-2">🎉</span>
-              <p>You&apos;re on the list! Check your inbox for verification details.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="subscribe-form">
-              <input
-                type="email"
-                placeholder="Enter your email address..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="subscribe-form__input"
-              />
-              <button type="submit" className="subscribe-form__btn">
-                Subscribe Now
-              </button>
-            </form>
-          )}
-        </section>
+          </div>
+
+        </div>
       </main>
 
-      {/* Editorial Blog Footer */}
       <footer className="blog-footer">
-        <div className="blog-container blog-footer__inner">
-          <div className="blog-footer__links">
-            <Link href="/about" className="blog-footer__link">
-              About this publication
-            </Link>
-            <a href="https://wainaina.tech" className="blog-footer__link">
-              Portfolio
-            </a>
-          </div>
+        <div className="blog-width-limit">
           <p className="blog-footer__copyright">
-            © {new Date().getFullYear()} Health Herald. Written by Wainaina Thomas.
+            © {new Date().getFullYear()} Health Herald. Written and curated by Wainaina Thomas.
           </p>
         </div>
       </footer>
