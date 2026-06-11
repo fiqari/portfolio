@@ -4,6 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { posts } from "./posts-data";
 
+const getPostThumbnail = (slug) => {
+  if (slug === "mobile-health-rails") return "/images/money_illustration.png";
+  if (slug === "decentralisation-dilemma") return "/images/county_illustration.png";
+  return "/images/nhif_illustration.png";
+};
+
 export default function BlogHome() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -74,96 +80,62 @@ export default function BlogHome() {
             
             {/* Featured Post Spotlight */}
             {featuredPost && (
-              <div className="nyt-card" style={{ marginBottom: "32px" }}>
-                {/* Card Header Logo (representing NYT logo) */}
-                <div className="nyt-card__logo-container">
-                  <Link href={`/posts/${featuredPost.slug}`} className="nyt-card__logo">
-                    The Health Herald
+              <article className="featured-article">
+                <span className="featured-article__label">{featuredPost.category}</span>
+                <h2 className="featured-article__title">
+                  <Link href={`/posts/${featuredPost.slug}`}>
+                    {featuredPost.title}
                   </Link>
-                </div>
-                <hr className="nyt-card__divider" />
-
-                {/* Card Body */}
-                <div className="nyt-card__body">
-                  <span className="nyt-card__category">{featuredPost.category}</span>
-                  <h2 className="nyt-card__title">
-                    <Link href={`/posts/${featuredPost.slug}`}>
-                      {featuredPost.title}
-                    </Link>
-                  </h2>
-                  <p className="nyt-card__subtitle">{featuredPost.excerpt}</p>
-
-                  <div className="nyt-card__actions">
-                    <Link href={`/posts/${featuredPost.slug}`} className="nyt-card__btn-pill">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M20 12v10H4V12" />
-                        <path d="M2 7h20v5H2z" />
-                        <path d="M12 22V7" />
-                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-                      </svg>
-                      Read full article
-                    </Link>
-                  </div>
+                </h2>
+                
+                <div className="featured-article__meta">
+                  <span className="featured-article__byline">By {featuredPost.author}</span>
+                  <span>•</span>
+                  <span>{featuredPost.date}</span>
+                  <span>•</span>
+                  <span>{featuredPost.readTime}</span>
                 </div>
 
-                {/* Card Image */}
-                <div className="nyt-card__image-container">
+                <div className="featured-article__image-container">
                   <Link href={`/posts/${featuredPost.slug}`}>
                     <img
                       src="/images/nhif_illustration.png"
                       alt={featuredPost.title}
-                      className="nyt-card__image"
+                      className="featured-article__img"
                     />
                   </Link>
                 </div>
-              </div>
+                
+                <p className="featured-article__excerpt">{featuredPost.excerpt}</p>
+              </article>
             )}
 
-            <div className="broadsheet-double-rule" style={{ borderColor: 'rgba(255, 255, 255, 0.25)', borderTop: '4px double rgba(255, 255, 255, 0.25)' }}>
-              <span className="secondary-section-title" style={{ color: '#ffffff', borderBottom: '2px solid rgba(255, 255, 255, 0.25)', marginBottom: 0 }}>
-                Additional Policy Bulletins
-              </span>
+            <div className="broadsheet-double-rule">
+              <span className="secondary-section-title">Additional Policy Bulletins</span>
             </div>
 
             {/* Secondary articles */}
             <div className="card-flow">
               {secondaryPosts.map((post) => (
-                <article key={post.slug} className="nyt-card">
-                  <div className="nyt-card__body">
-                    <span className="nyt-card__category">{post.category}</span>
-                    <h3 className="nyt-card__title" style={{ fontSize: "1.6rem" }}>
+                <article key={post.slug} className="editorial-card">
+                  <div className="editorial-card__content">
+                    <div className="editorial-card__meta">
+                      <span className="editorial-card__category">{post.category}</span>
+                      <span>{post.date} · {post.readTime}</span>
+                    </div>
+                    <h3 className="editorial-card__title">
                       <Link href={`/posts/${post.slug}`}>
                         {post.title}
                       </Link>
                     </h3>
-                    <p className="nyt-card__subtitle" style={{ marginBottom: "16px" }}>{post.excerpt}</p>
-                    <div className="nyt-card__actions">
-                      <Link href={`/posts/${post.slug}`} className="nyt-card__btn-pill">
-                        Read Analysis
-                      </Link>
-                    </div>
+                    <p className="editorial-card__excerpt">{post.excerpt}</p>
                   </div>
-                  <div className="nyt-card__image-container" style={{ aspectRatio: "16 / 8" }}>
+                  <div className="editorial-card__thumbnail">
                     <Link href={`/posts/${post.slug}`}>
                       <img
-                        src={`/images/${
-                          post.slug === "mobile-health-rails"
-                            ? "money_illustration"
-                            : "county_illustration"
-                        }.png`}
+                        src={getPostThumbnail(post.slug)}
                         alt={post.title}
-                        className="nyt-card__image"
+                        className="editorial-card__img"
                       />
                     </Link>
                   </div>
