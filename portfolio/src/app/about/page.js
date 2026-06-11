@@ -13,23 +13,23 @@ export default function AboutPage() {
   const processSteps = [
     {
       num: "01",
-      title: "Find the actual problem",
-      body: "Most briefs describe a symptom. Before I sketch anything, I need to know if the problem is in the UI, the data, the business model, or the policy layer. Getting this wrong means designing the right solution for the wrong problem.",
+      title: "Find the bottleneck",
+      body: "If a checkout is slow, changing the button color won't save it. I look at the payment APIs and data flows first.",
     },
     {
       num: "02",
-      title: "Name the constraints",
-      body: "What devices do users actually have? What's the data budget? What can engineering ship this quarter? I write these down explicitly. They're not obstacles — they're the brief.",
+      title: "Set the constraints",
+      body: "I design for the user's actual phone and connection speed. If the app uses too much data or loads slowly on 3G, it fails.",
     },
     {
       num: "03",
-      title: "Make the hard calls first",
-      body: "Which information goes first? What gets cut? What's the one thing each screen has to do? I make these decisions before opening Figma, because the interface should follow from them — not the other way around.",
+      title: "Map the edge cases",
+      body: "I design the errors, the empty states, and the offline views before I design the happy path. The app has to fail gracefully.",
     },
     {
       num: "04",
-      title: "Ship, measure, be honest",
-      body: "I push for testable work early. If the numbers don't move, I write down why and change the approach. The reflection matters as much as the output.",
+      title: "Ship and watch",
+      body: "I test functional prototypes early with real users. If people get stuck, we rewrite the copy or change the flow immediately.",
     },
   ];
 
@@ -52,24 +52,16 @@ export default function AboutPage() {
           <div className="narrow">
             <FadeIn>
               <h1 className="about-hero__title">
-                I figure out what to build. Then I build it.
+                I figure out how it works before I open Figma.
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.1}>
               <p className="about-hero__intro">
-                I&apos;m a product designer who works end-to-end — from the first 
-                conversation about what the product should do, through the 
-                information architecture and interaction model, to the final 
-                interface people actually use.
+                I&apos;m a product designer who codes. I build mobile checkouts, transaction flows, and web apps that need to be fast and reliable. I don&apos;t just draw mockups; I structure the data flow and build the production-ready React elements.
               </p>
               <p className="about-hero__intro">
-                The work I&apos;m most drawn to has real constraints: limited 
-                budgets, unfamiliar markets, infrastructure that pushes back. 
-                Those projects force better decisions. My two current case 
-                studies — a supermarket deal aggregator and a museum ticketing 
-                redesign — both came from noticing broken experiences in 
-                Nairobi and deciding to fix them with design.
+                I focus on real-world constraints—like spotty connections, high data costs, and slow payment gateways. If an interface is slow or confusing, people leave. My case studies—a supermarket deal aggregator and a museum ticketing flow—address real, operational bottlenecks in Nairobi. I built them to solve systems issues with code and interaction design.
               </p>
             </FadeIn>
           </div>
@@ -81,19 +73,13 @@ export default function AboutPage() {
             <FadeIn>
               <p className="case-section__label">What I do</p>
               <h2 className="case-section__title">
-                The upstream work and the interface that follows
+                I build what I design
               </h2>
               <p className="case-section__text">
-                I make product-level calls — what to build, what to cut, 
-                how the system should behave — and then design the screens 
-                that make those decisions tangible. I don&apos;t hand off wireframes 
-                and walk away. I care about the spacing, the transitions, 
-                the way a loading state feels at 250ms.
+                I don&apos;t just hand off static mockups and hope for the best. I write the frontend code myself. That means the micro-animations, loading states, and offline fallbacks work exactly the same in the browser as they do in Figma.
               </p>
               <p className="case-section__text">
-                I can also write frontend code. Not as a novelty — because 
-                closing the gap between the Figma file and what ships means 
-                fewer things get lost in translation.
+                For me, coding isn&apos;t a side gig. It&apos;s how I ensure the user experience in the browser matches the design.
               </p>
             </FadeIn>
           </div>
@@ -144,36 +130,34 @@ export default function AboutPage() {
             <FadeIn>
               <p className="case-section__label">How I collaborate</p>
               <h2 className="case-section__title">
-                Remote is how I work, not something I tolerate
+                I design for async teams
               </h2>
               <p className="case-section__text">
-                I&apos;ve worked in distributed setups my entire design career. 
-                I have specific habits that make this reliable regardless 
-                of where the rest of the team sits.
+                I&apos;ve worked in distributed setups my entire design career. I use a few simple habits to keep work moving without constant meetings.
               </p>
               <div className="about-remote-grid">
                 <div className="about-remote-card">
-                  <h3 className="about-remote-card__title">Written-first</h3>
+                  <h3 className="about-remote-card__title">Write it down</h3>
                   <p className="about-remote-card__body">
-                    Every design decision lives in Notion or Figma. If it&apos;s not written down, it didn&apos;t happen.
+                    Every design decision is documented in Figma or Notion. Anyone can jump in and find the context without waiting for a meeting.
                   </p>
                 </div>
                 <div className="about-remote-card">
-                  <h3 className="about-remote-card__title">Loom over meetings</h3>
+                  <h3 className="about-remote-card__title">Record a Loom</h3>
                   <p className="about-remote-card__body">
-                    I record design walkthroughs instead of scheduling 30-minute calls. Teammates review on their time.
+                    I record 3-minute video walkthroughs of my designs. The team can watch on their own time, keeping calendars clear.
                   </p>
                 </div>
                 <div className="about-remote-card">
-                  <h3 className="about-remote-card__title">Structured overlap</h3>
+                  <h3 className="about-remote-card__title">Structured syncs</h3>
                   <p className="about-remote-card__body">
                     Syncs and pairing happen during shared hours. Deep work happens outside them.
                   </p>
                 </div>
                 <div className="about-remote-card">
-                  <h3 className="about-remote-card__title">Visible progress</h3>
+                  <h3 className="about-remote-card__title">Share early</h3>
                   <p className="about-remote-card__body">
-                    Weekly design updates in Slack. Nobody should need to ask &quot;where are we on this?&quot;.
+                    I post weekly updates in Slack. You&apos;ll always know what is designed, what is in progress, and what is ready for feedback.
                   </p>
                 </div>
               </div>

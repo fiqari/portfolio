@@ -7,7 +7,7 @@ import AnnotatedImage from "@/components/AnnotatedImage";
 
 export const metadata = {
   title: "Dill Ecosystem — Wainaina Thomas",
-  description: "Architecting a three-sided B2C/B2B marketplace for grocery deals from data pipeline to final pixel.",
+  description: "Grocery deal aggregator for Nairobi. Built from Python scraper scripts to React frontend.",
 };
 
 export default function CaseStudyDill() {
@@ -28,10 +28,10 @@ export default function CaseStudyDill() {
           <div className="narrow">
             <FadeIn>
               <h1 className="hero__title mb-4">
-                Four retailers. Three marketplace sides. One unified interface.
+                Four major retailers. One normalized interface.
               </h1>
               <p className="hero__subtitle mb-8">
-                Dill is Nairobi&apos;s smartest B2B/B2C marketplace for grocery deals. I designed and built it from the ground up to bridge the gap between price-conscious shoppers and supermarket marketing managers.
+                Dill aggregates grocery promotions across Nairobi&apos;s major supermarket chains. I designed the database schema, built the Python scraping pipeline, and wrote the mobile-first frontend to unify fragmented deal data for consumers and store managers.
               </p>
               
               <div className="hero-meta mb-12 flex flex-wrap gap-6">
@@ -62,10 +62,10 @@ export default function CaseStudyDill() {
               <span className="phase-header__meta">Problem Framing</span>
               
               <p className="case-section__text">
-                Currently, grocery deal discovery in Kenya is highly fragmented. Consumers hunt for discounts across disparate supermarket websites and social media feeds. Conversely, supermarkets rely on expensive, low-conversion channels (broadcasting via TV, ads, SMS) to reach an audience already seeking savings.
+                Supermarkets in Nairobi publish discounts in PDF pamphlets, social media posts, and separate website subdomains. To find a discount, shoppers have to browse dozens of sources. At the same time, store managers buy expensive print and SMS ads to broadcast deals, with no way to measure which promotions convert.
               </p>
               <p className="case-section__text">
-                The solution is a three-sided ecosystem: the Shopper, the Store Manager, and the Dill Aggregator unifying the data. But building a marketplace from scratch introduces the classic cold-start problem.
+                We needed to bring this into a single app. But supermarket managers are busy. They won&apos;t log into a new portal to upload deals. To make Dill work, we had to get the data without asking them.
               </p>
             </FadeIn>
           </div>
@@ -75,15 +75,15 @@ export default function CaseStudyDill() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">Phase 1: Aggregation</h2>
-              <span className="phase-header__meta">The MVP Architecture</span>
+              <h2 className="phase-header">Phase 1: Getting the data</h2>
+              <span className="phase-header__meta">The automated pipeline</span>
               
-              <span className="stealth-label">Proprietary Architecture</span>
+              <span className="stealth-label">Active Scraper Pipeline</span>
               <p className="case-section__text">
-                The standard approach is to build a merchant portal and ask supermarkets to upload their promotions. I decided against it. A marketing manager at Carrefour Kenya is not going to maintain a dashboard for an app with zero users. The portal would launch empty.
+                Instead of waiting for supermarkets to sign up, I wrote daily Python scrapers. They pull promotions directly from Naivas, Carrefour, and Quickmart websites.
               </p>
               <p className="case-section__text">
-                Instead, I cut the merchant out of the pipeline. I built a custom data aggregation layer that autonomously normalises heterogeneous deal data from major supermarket sites into a unified, user-centric mobile interface. No partnerships required.
+                The system cleans the messy scraper output, calculates the exact discount, and maps it to standardized brand logos. The shopper gets a clean, unified feed with no manual data entry required.
               </p>
 
               <div className="my-10 bg-gray-50 p-6 rounded-3xl border border-gray-100">
@@ -125,8 +125,8 @@ export default function CaseStudyDill() {
                   },
                   {
                     x: 30, y: 80,
-                    title: "Brand Normalisation",
-                    desc: "Irregular product titles from various scrapes are parsed and mapped to clean brand logos and consistent naming conventions."
+                    title: "Brand Mapping",
+                    desc: "Irregular scraper output like 'Ariel Pwdr 2kg' is mapped to a standardized database entry with correct brand logos."
                   }
                 ]}
               />
@@ -138,12 +138,12 @@ export default function CaseStudyDill() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">Phase 2: The Stickiness Pivot</h2>
-              <span className="phase-header__meta">B2C User Retention Strategy</span>
+              <h2 className="phase-header">Phase 2: Keeping shoppers coming back</h2>
+              <span className="phase-header__meta">Mobile features</span>
               
               <span className="stealth-label">Illustrative Concept</span>
               <p className="case-section__text">
-                With the supply-side populated via automation, Phase 2 transitions Dill from a passive aggregator into an active, sticky ecosystem. This involves evolving the UX from search to predictive discovery.
+                Once we had the deals, we had to make the app useful. Grocery shopping is a habit. We designed features that fit into the shopper&apos;s daily routine.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 my-10">
@@ -158,16 +158,16 @@ export default function CaseStudyDill() {
                 <div className="space-y-8 flex flex-col justify-center">
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-1 h-full bg-emerald-500"></div>
-                    <h4 className="font-bold text-gray-900 mb-2">Location Awareness</h4>
-                    <p className="text-sm text-gray-600">Geo-fencing logic that pushes real-time flash deal alerts when a user is within 500 metres of a specific supermarket branch.</p>
+                    <h4 className="font-bold text-gray-900 mb-2">Proximity Alerts</h4>
+                    <p className="text-sm text-gray-600">The app alerts users when they are near a store with a discount they saved.</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                    <h4 className="font-bold text-gray-900 mb-2">Subscriptions & Channels</h4>
-                    <p className="text-sm text-gray-600">Users can subscribe to verified supermarket channels or high-intent product categories (e.g., &apos;Dairy&apos; or &apos;Baby&apos;) to curate their feed.</p>
+                    <h4 className="font-bold text-gray-900 mb-2">Category Filters</h4>
+                    <p className="text-sm text-gray-600">Shoppers subscribe to categories like &apos;Dairy&apos; or &apos;Baby Care&apos; to build a custom, fast-loading feed.</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                    <h4 className="font-bold text-gray-900 mb-2">Predictive &quot;Dill of the Day&quot;</h4>
-                    <p className="text-sm text-gray-600">ML-powered logic learns grocery habits to surface highly relevant matches, maximising conversion rates before the user even searches.</p>
+                    <h4 className="font-bold text-gray-900 mb-2">Smart Sorting</h4>
+                    <p className="text-sm text-gray-600">The homepage ranks high-frequency household items first based on what the user taps and saves.</p>
                   </div>
                 </div>
               </div>
@@ -179,15 +179,15 @@ export default function CaseStudyDill() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">Phase 3: The Scalability Pivot</h2>
-              <span className="phase-header__meta">B2B SaaS Monetisation</span>
+              <h2 className="phase-header">Phase 3: Letting merchants post</h2>
+              <span className="phase-header__meta">Supermarket dashboard</span>
               
               <span className="stealth-label">Conceptual Placeholder</span>
               <p className="case-section__text">
-                The final evolution transforms Dill into a self-sustaining commercial channel. Once the B2C audience is established, supermarkets are given the keys.
+                Once Dill had an active user base, we built a way for store managers to post promotions directly.
               </p>
               <p className="case-section__text">
-                I designed a streamlined B2B SaaS mobile dashboard that empowers store managers to bypass traditional, slow ad spend. They can draft, target, and publish deals directly to their subscribed Dill audience in under 60 seconds.
+                I designed a mobile B2B dashboard where a store manager can launch a flash sale in under a minute, bypassing corporate ad approval cycles.
               </p>
 
               <div className="my-10 bg-gray-100 rounded-3xl w-full aspect-video flex items-center justify-center border border-gray-200">
@@ -200,9 +200,9 @@ export default function CaseStudyDill() {
               </div>
 
               <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 my-8">
-                <h4 className="font-bold text-emerald-900 mb-2">The &quot;Magic Upload&quot; Flow</h4>
+                <h4 className="font-bold text-emerald-900 mb-2">Shelf-tag scanning</h4>
                 <p className="text-sm text-emerald-800">
-                  To eliminate B2B friction, the dashboard features an OCR-powered upload system. A store manager snaps a photo of a physical promo flyer, and the system automatically extracts the product name, original price, and discount percentage to auto-fill the digital listing.
+                  A store manager can take a photo of a shelf tag. The system reads the prices and automatically drafts the listing.
                 </p>
               </div>
 
@@ -214,9 +214,9 @@ export default function CaseStudyDill() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <p className="case-section__label mt-8">Accessibility Standard</p>
+              <p className="case-section__label mt-8">Legible in the aisles</p>
               <p className="case-section__text">
-                Deal cards use sufficient contrast for price text against card backgrounds, meeting WCAG 2.1 AA requirements. All interactive elements have minimum 44×44px touch targets for reliable use on mid-range Android devices. The app respects <code>prefers-reduced-motion</code> for users who have disabled animations at the OS level.
+                Supermarkets have bright fluorescent lights and high screen glare. We used high-contrast text and 48×48px touch targets so shoppers can navigate the app easily while holding a shopping basket.
               </p>
             </FadeIn>
           </div>
@@ -228,12 +228,12 @@ export default function CaseStudyDill() {
             <FadeIn>
               <div className="case-reflection">
                 <p className="case-section__label">Builder Retrospective</p>
-                <h2 className="case-section__title">Products that work before they look good.</h2>
+                <h2 className="case-section__title">Scrapers, databases, and pixels</h2>
                 <p className="case-section__text">
-                  Dill proves the ability to design an ecosystem end-to-end. It isn&apos;t just a UI prototype; it&apos;s a foundation of rigorous data logic ensuring seamless functionality from the backend scraping engine to the final high-fidelity pixel.
+                  Dill isn&apos;t a prototype. It&apos;s a live progressive web app. Building it meant writing Python scrapers, setting up MongoDB, and writing React code.
                 </p>
                 <p className="case-section__text">
-                  The interface aims for a 7-Eleven level of commercial polish—clean, conversion-focused, and incredibly fast. It demonstrates that complex architecture and business model scaling can be translated into a frictionless, empowering experience for both sides of the marketplace.
+                  Because I worked on the entire pipeline, the design is fast, robust, and powered entirely by live data.
                 </p>
               </div>
             </FadeIn>

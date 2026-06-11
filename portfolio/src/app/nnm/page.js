@@ -7,7 +7,7 @@ import AnnotatedImage from "@/components/AnnotatedImage";
 
 export const metadata = {
   title: "Nairobi National Museum — Wainaina Thomas",
-  description: "From a 45-minute queue to a 45-second flow. Redesigning the ticketing experience.",
+  description: "Redesigning the ticket checkout flow.Decoupling government profile requirements from museum ticket sales.",
 };
 
 export default function CaseStudyNNM() {
@@ -28,10 +28,10 @@ export default function CaseStudyNNM() {
           <div className="narrow">
             <FadeIn>
               <h1 className="hero__title mb-4">
-                From a 45-minute queue to a 45-second flow.
+                From a 45-minute queue to a 45-second checkout.
               </h1>
               <p className="hero__subtitle mb-8">
-                Tourists were abandoning the Nairobi National Museum at the gates because the ticketing portal required a Kenyan government ID. I redesigned the purchase path into a high-conversion, guest-first checkout.
+                Visitors were giving up at the museum gates because the online ticket system required a government account. I redesigned the checkout so anyone can buy a ticket in 45 seconds using guest checkout and local or international cards.
               </p>
               
               <div className="hero-meta mb-12 flex flex-wrap gap-6">
@@ -67,11 +67,11 @@ export default function CaseStudyNNM() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">The Stakes</h2>
+              <h2 className="phase-header">The eCitizen Bottleneck</h2>
               <span className="phase-header__meta">Problem Framing</span>
               
               <p className="case-section__text">
-                I didn&apos;t need to conduct user interviews to find the problem. Eighteen months of TripAdvisor reviews told the exact same story: the museum itself is world-class, but the payment gateway is a revenue leak.
+                I read TripAdvisor reviews from 2024 to 2026. The complaints were identical: the museum is incredible, but the payment gateway is broken.
               </p>
 
               <div className="grid gap-4 my-8">
@@ -90,14 +90,14 @@ export default function CaseStudyNNM() {
               </div>
 
               <p className="case-section__text">
-                The government had mandated that all national park and museum fees go through &apos;eCitizen&apos;, a centralised portal designed for citizens accessing civil services. Forcing an international tourist standing outside a museum to create a government profile is a severe mismatch of intent and friction.
+                The government required all fees to go through eCitizen—a portal meant for government services like filing taxes. Forcing a visitor standing at the gate to register a government profile created massive friction.
               </p>
               
               <figure className="case-image my-12">
                 <div className="case-image__wrapper bg-gray-100 p-4 rounded-3xl">
                   <Image src="/assets/nnm/Hominids.webp" alt="Museum diorama of early hominids" width={1200} height={800} className="rounded-2xl" />
                 </div>
-                <figcaption className="case-image__caption">The museum houses an incredible early hominid collection. People were flying to Kenya to see it, and giving up at the ticket desk.</figcaption>
+                <figcaption className="case-image__caption">The museum houses world-class palaeoanthropological collections. Visitors were traveling internationally to view them, only to be turned away by checkout requirements.</figcaption>
               </figure>
             </FadeIn>
           </div>
@@ -107,11 +107,11 @@ export default function CaseStudyNNM() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">The Wall</h2>
-              <span className="phase-header__meta">Strategic Solution 1</span>
+              <h2 className="phase-header">Guest Checkout</h2>
+              <span className="phase-header__meta">Reducing registration friction</span>
               
               <p className="case-section__text">
-                The root cause wasn&apos;t bad UX; it was a bad policy dependency. The interface assumed the user&apos;s primary goal was &quot;logging into the government portal,&quot; rather than &quot;buying a ticket.&quot;
+                The system assumed users wanted to register a government account. By removing that step, we let users buy tickets directly.
               </p>
 
               <AnnotatedImage 
@@ -121,13 +121,13 @@ export default function CaseStudyNNM() {
                 annotations={[
                   {
                     x: 50, y: 80,
-                    title: "Guest Checkout",
-                    desc: "This is the most critical button in the app. Like an airline or hotel, we let users pay and get their ticket without creating an account."
+                    title: "No registration required",
+                    desc: "Visitors enter their name and email, pay, and get their tickets. No account setup."
                   },
                   {
                     x: 50, y: 22,
-                    title: "Upfront Segmentation",
-                    desc: "Rates vary by residency. Asking this first ensures the pricing shown immediately matches what the user will actually pay."
+                    title: "Price transparency",
+                    desc: "Pricing updates instantly based on residency (citizen, resident, or tourist) before entering checkout."
                   }
                 ]}
               />
@@ -139,29 +139,26 @@ export default function CaseStudyNNM() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">The Bottleneck</h2>
-              <span className="phase-header__meta">Strategic Solution 2</span>
+              <h2 className="phase-header">Split Payment Rails</h2>
+              <span className="phase-header__meta">Handling local and foreign payments</span>
               
               <p className="case-section__text">
-                The second failure point was payment processing. International cards were failing on the local gateway, and tourists generally don&apos;t have Kenyan mobile money (M-Pesa) accounts. 
-              </p>
-              <p className="case-section__text">
-                My solution was to split the payment rails visually and technologically based on the user&apos;s context.
+                Local payment gateways frequently decline foreign credit cards, and visitors don&apos;t have domestic mobile money accounts. I designed a checkout that routes payments dynamically based on user type.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 my-12">
                 <div>
                   <Image src="/assets/nnm/5.png" alt="Payment selection" width={400} height={800} className="rounded-3xl shadow-lg border border-gray-100" />
-                  <p className="text-sm text-gray-500 mt-4 px-2"><strong>Data Minimisation:</strong> Name and email are the only fields required to deliver the ticket. Everything else is friction.</p>
+                  <p className="text-sm text-gray-500 mt-4 px-2"><strong>Data Minimisation:</strong> We only ask for a name and email. Anything else is just friction.</p>
                 </div>
                 <div className="space-y-8 flex flex-col justify-center">
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                    <h4 className="font-bold text-gray-900 mb-2">Rail A: M-Pesa</h4>
-                    <p className="text-sm text-gray-600">For locals and residents, M-Pesa is the default. The flow uses an STK push—a prompt appears directly on their phone. Fast, culturally ingrained, and highly converting.</p>
+                    <h4 className="font-bold text-gray-900 mb-2">M-Pesa for residents</h4>
+                    <p className="text-sm text-gray-600">Domestic visitors pay with M-Pesa. The system sends a payment prompt directly to their phone screen.</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                    <h4 className="font-bold text-gray-900 mb-2">Rail B: Stripe (Card)</h4>
-                    <p className="text-sm text-gray-600">For internationals, standardising on a globally trusted gateway like Stripe prevents the &quot;card declined by foreign bank&quot; errors that were plaguing the original system.</p>
+                    <h4 className="font-bold text-gray-900 mb-2">Stripe for international cards</h4>
+                    <p className="text-sm text-gray-600">International visitors pay via Stripe, avoiding bank declines and card errors.</p>
                   </div>
                 </div>
               </div>
@@ -173,11 +170,11 @@ export default function CaseStudyNNM() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <h2 className="phase-header">The Result</h2>
-              <span className="phase-header__meta">Outcome</span>
+              <h2 className="phase-header">Offline Tickets</h2>
+              <span className="phase-header__meta">Handling weak gate connections</span>
               
               <p className="case-section__text">
-                Another recurring complaint was the lack of reliable Wi-Fi at the museum gates, meaning web-based tickets would fail to load precisely when needed.
+                Network connections are weak at the museum gates. The new design generates a ticket that works offline.
               </p>
 
               <AnnotatedImage 
@@ -188,13 +185,13 @@ export default function CaseStudyNNM() {
                 annotations={[
                   {
                     x: 50, y: 35,
-                    title: "High-Contrast QR",
-                    desc: "Sized for immediate scanning by the gate staff's handheld devices, even on screens with low brightness or under glare."
+                    title: "High-contrast QR",
+                    desc: "Easy to scan by gate staff, even under direct sunlight or screen glare."
                   },
                   {
                     x: 50, y: 88,
-                    title: "Offline Fallback",
-                    desc: "Tourists without roaming data can download the PDF to their device storage while on hotel Wi-Fi before arriving."
+                    title: "Apple Wallet & PDF",
+                    desc: "Visitors download the ticket on hotel Wi-Fi and save it to their phone before they arrive."
                   }
                 ]}
               />
@@ -206,9 +203,9 @@ export default function CaseStudyNNM() {
         <section className="case-section container">
           <div className="narrow">
             <FadeIn>
-              <p className="case-section__label mt-8">Accessibility Standard</p>
+              <p className="case-section__label mt-8">Legible in direct sunlight</p>
               <p className="case-section__text">
-                All interactive elements meet WCAG 2.1 AA contrast requirements against both the white card surfaces and the light grey page background. Button hit areas are minimum 44×44px — critical for a flow designed to be used on a phone in direct sunlight outside a museum entrance. The entire ticket purchase flow is navigable by keyboard, and form inputs use explicit labels for screen reader compatibility.
+                Since visitors buy tickets standing outside the gates, we used large 48×48px buttons and high-contrast text that remains readable in bright sunlight.
               </p>
             </FadeIn>
           </div>
@@ -220,12 +217,12 @@ export default function CaseStudyNNM() {
             <FadeIn>
               <div className="case-reflection">
                 <p className="case-section__label">Builder Retrospective</p>
-                <h2 className="case-section__title">Diagnosis over decoration.</h2>
+                <h2 className="case-section__title">Diagnosis over decoration</h2>
                 <p className="case-section__text">
-                  This project reinforced that the highest-leverage design work happens before Figma is even opened. The original portal was aesthetically fine, but operationally broken. 
+                  The original museum portal failed not because of its layout, but because of its system boundaries. Forcing a government identity registry onto a visitor ticket purchase was an operational mismatch.
                 </p>
                 <p className="case-section__text">
-                  By treating the problem as a business logic failure rather than a UI failure, I was able to design a system that works exactly how the end-user expects, while still fulfilling the government&apos;s requirement for digitised revenue collection. The architecture scales seamlessly to any other national park or public utility facing the same bottleneck.
+                  By treating this as a system logic problem, I designed a guest flow that satisfies government auditing while letting visitors enter the museum without hassle.
                 </p>
               </div>
             </FadeIn>

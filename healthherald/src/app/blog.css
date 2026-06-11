@@ -1,43 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&family=UnifrakturMaguntia&display=swap');
 
 /* ==========================================================================
-   Health Herald — Modern Editorial Data System
-   Typography: Geometric sans-serif (Outfit + Inter + Space Mono)
-   Inspired by Milkvine/Bloomberg data-driven presentation style
+   Health Herald — Refined NYT Style Card & Broadsheet System
    ========================================================================== */
 
 :root {
-  --blog-bg: #FFFFFF;
-  --blog-surface: #F7F7F8;
-  --blog-text-dark: #1A1A1A;
-  --blog-text-mid: #3D3D3D;
-  --blog-text-muted: #6B6B6B;
-  --blog-text-light: #9A9A9A;
-  --blog-border: #E8E8E8;
-  --blog-border-dark: #D0D0D0;
-  --blog-accent: #2ECB71;            /* Teal-green from reference */
-  --blog-accent-hover: #27AE60;
-  --blog-accent-purple: #6C5CE7;     /* Purple accent from reference */
-  --blog-accent-purple-light: #A29BFE;
-
-  --blog-font-display: "Outfit", "Inter", system-ui, -apple-system, sans-serif;
-  --blog-font-body: "Inter", "Outfit", system-ui, -apple-system, sans-serif;
-  --blog-font-mono: "Space Mono", "Courier New", monospace;
-
-  --blog-radius: 8px;
-  --blog-radius-lg: 16px;
+  --blog-bg: #1e241b;          /* Dark forest background fallback */
+  --blog-surface: #FFFFFF;
+  --blog-text-dark: #121212;   /* Crisp, ink-like black */
+  --blog-text-muted: #4e4b47;  /* Refined charcoal */
+  --blog-border-thin: #E2E2E2; /* NYT light border */
+  --blog-border-thick: #121212;
+  --blog-accent-green: #07472A; /* Editorial forest green */
+  --blog-accent-blue: #0A59E4;  /* Bloomberg-style electric blue highlight */
+  
+  --blog-font-logo: "UnifrakturMaguntia", Georgia, serif;
+  --blog-font-display: "Newsreader", "Playfair Display", Georgia, serif;
+  --blog-font-body: "Lora", Georgia, serif;
+  --blog-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --blog-font-mono: "IBM Plex Mono", Courier, monospace;
 }
 
 /* --- Layout Base --- */
 .blog-theme {
   background-color: var(--blog-bg);
+  background-image: linear-gradient(rgba(18, 21, 13, 0.4), rgba(18, 21, 13, 0.75)), url('/images/bg_nature.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--blog-text-dark);
   font-family: var(--blog-font-body);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.1rem;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  padding-bottom: 60px;
 }
 
 .blog-theme * {
@@ -45,292 +42,223 @@
 }
 
 .blog-width-limit {
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 24px;
 }
 
 .blog-width-narrow {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
-/* Utility spacing */
-.py-8 { padding-top: 32px; padding-bottom: 32px; }
-.py-12 { padding-top: 48px; padding-bottom: 48px; }
-.py-16 { padding-top: 64px; padding-bottom: 64px; }
-.mt-12 { margin-top: 48px; }
-.mb-6 { margin-bottom: 24px; }
-
-/* --- Navigation --- */
-.blog-nav {
-  border-bottom: 1px solid var(--blog-border);
-  background-color: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+/* --- Broadsheet Grid Layout & Rule Lines --- */
+.broadsheet-border-top {
+  border-top: 1px solid var(--blog-border-thin);
 }
 
-.blog-nav__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 72px;
+.broadsheet-border-bottom {
+  border-bottom: 1px solid var(--blog-border-thin);
 }
 
-.blog-nav__logo {
-  font-family: var(--blog-font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--blog-text-dark);
-  text-decoration: none;
-  letter-spacing: -0.02em;
+.broadsheet-double-rule {
+  border-top: 4px double var(--blog-text-dark);
+  border-bottom: 1px solid var(--blog-text-dark);
+  padding: 8px 0;
+  margin: 24px 0;
 }
 
-.blog-nav__logo span {
-  color: var(--blog-accent);
+.broadsheet-hairline-rule {
+  height: 1px;
+  background-color: var(--blog-border-thin);
+  border: none;
+  margin: 32px 0;
 }
 
-.blog-nav__links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.blog-nav__link {
-  font-family: var(--blog-font-body);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blog-text-muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.blog-nav__link:hover {
-  color: var(--blog-text-dark);
-}
-
-.blog-nav__btn {
-  background-color: var(--blog-accent);
-  color: #FFFFFF;
-  font-family: var(--blog-font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 10px 20px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.15s ease;
-}
-
-.blog-nav__btn:hover {
-  background-color: var(--blog-accent-hover);
-  transform: translateY(-1px);
-}
-
-/* --- Masthead --- */
+/* --- Masthead Section (Classic Newspaper Title) --- */
 .masthead {
   text-align: center;
-  padding: 72px 0 24px 0;
+  padding: 48px 0 16px 0;
 }
 
 .masthead__sub-label {
-  font-family: var(--blog-font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-family: var(--blog-font-mono);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--blog-accent);
-  display: block;
-  margin-bottom: 16px;
+  letter-spacing: 0.15em;
+  color: #a3c4bc; /* Muted teal/green */
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .masthead__title {
-  font-family: var(--blog-font-display);
-  font-size: clamp(3.2rem, 9vw, 6rem);
-  font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
-  color: var(--blog-text-dark);
+  font-family: var(--blog-font-logo);
+  font-size: clamp(3.25rem, 10vw, 6rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: #ffffff; /* Crisp white for dark background */
   margin: 0;
 }
 
 .masthead__tagline {
   font-family: var(--blog-font-body);
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--blog-text-muted);
-  max-width: 520px;
-  margin: 20px auto 0 auto;
-  line-height: 1.6;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #cbd5e1; /* Muted slate/off-white */
+  max-width: 600px;
+  margin: 12px auto 0 auto;
+  line-height: 1.5;
 }
 
-/* --- Dateline Bar --- */
+/* --- Issue Dateline Bar (WSJ Broadside style) --- */
 .dateline-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--blog-font-body);
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-family: var(--blog-font-mono);
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blog-text-light);
-  border-top: 1px solid var(--blog-border);
-  border-bottom: 1px solid var(--blog-border);
-  padding: 10px 0;
-  margin-bottom: 48px;
+  letter-spacing: 0.15em;
+  color: #cbd5e1;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 12px;
+  margin-bottom: 32px;
 }
 
 .dateline-bar__issue {
   font-weight: 600;
-  color: var(--blog-text-muted);
 }
 
-/* --- Broadsheet Double Rule (simplified) --- */
-.broadsheet-double-rule {
-  border-top: 2px solid var(--blog-border);
-  padding: 10px 0 0 0;
-  margin: 40px 0 28px 0;
-}
-
-/* --- Editorial Grid --- */
+/* --- Article Columns Grid (WSJ style) --- */
 .editorial-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 32px;
 }
 
 @media (min-width: 1024px) {
   .editorial-grid {
-    grid-template-columns: 1fr 340px;
-    gap: 56px;
+    grid-template-columns: 8fr 4fr; /* Main story and sidebar */
+    gap: 48px;
   }
-
+  
   .editorial-grid__main {
-    padding-right: 56px;
-    border-right: 1px solid var(--blog-border);
+    border-right: 1px solid var(--blog-border-thin);
+    padding-right: 48px;
   }
 }
 
-/* --- Featured Article --- */
+/* --- Featured Article Spotlight --- */
 .featured-article {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .featured-article__label {
-  font-family: var(--blog-font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-family: var(--blog-font-mono);
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--blog-accent);
+  letter-spacing: 0.15em;
+  color: var(--blog-accent-green);
+  font-weight: 700;
   display: inline-block;
-  margin-bottom: 16px;
-  padding-bottom: 4px;
-  border-bottom: 2px solid var(--blog-accent);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--blog-accent-green);
+  padding-bottom: 2px;
 }
 
 .featured-article__title {
   font-family: var(--blog-font-display);
-  font-size: clamp(2rem, 4.5vw, 2.8rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.2rem, 5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--blog-text-dark);
   margin-bottom: 16px;
 }
 
 .featured-article__title a {
   text-decoration: none;
-  color: inherit;
-  transition: color 0.2s ease;
+  background-image: linear-gradient(transparent 95%, var(--blog-border-thin) 95%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.3s ease;
 }
 
 .featured-article__title a:hover {
-  color: var(--blog-accent);
+  background-size: 100% 100%;
+  color: var(--blog-accent-green);
 }
 
 .featured-article__meta {
-  font-family: var(--blog-font-body);
+  font-family: var(--blog-font-mono);
   font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--blog-text-light);
-  margin-bottom: 20px;
+  color: var(--blog-text-muted);
+  margin-bottom: 18px;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .featured-article__byline {
-  font-weight: 600;
-  color: var(--blog-text-mid);
+  font-weight: 700;
+  color: var(--blog-text-dark);
 }
 
 .featured-article__excerpt {
   font-family: var(--blog-font-body);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.7;
   color: var(--blog-text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .read-more-link {
-  font-family: var(--blog-font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-family: var(--blog-font-mono);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--blog-accent);
+  letter-spacing: 0.1em;
+  color: var(--blog-accent-green);
+  font-weight: 700;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: gap 0.2s ease;
+  gap: 4px;
 }
 
 .read-more-link::after {
-  content: "→";
+  content: " →";
   transition: transform 0.2s ease;
 }
 
-.read-more-link:hover {
-  gap: 10px;
-}
-
 .read-more-link:hover::after {
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
-/* --- Section Title --- */
+/* --- Secondary List Grid (Bloomberg high-contrast blocks) --- */
 .secondary-section-title {
-  font-family: var(--blog-font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-family: var(--blog-font-mono);
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--blog-text-mid);
+  letter-spacing: 0.15em;
+  color: var(--blog-text-dark);
+  border-bottom: 2px solid var(--blog-text-dark);
+  padding-bottom: 6px;
+  margin-bottom: 24px;
   display: block;
 }
 
-/* --- Article Card Flow --- */
 .card-flow {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 
 .editorial-card {
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--blog-border);
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--blog-border-thin);
 }
 
 .editorial-card:last-child {
@@ -338,138 +266,136 @@
 }
 
 .editorial-card__meta {
-  font-family: var(--blog-font-body);
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-family: var(--blog-font-mono);
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--blog-text-light);
-  margin-bottom: 10px;
+  color: var(--blog-text-muted);
+  margin-bottom: 8px;
 }
 
 .editorial-card__category {
-  color: var(--blog-accent);
-  font-weight: 600;
+  color: var(--blog-accent-green);
+  font-weight: 700;
   margin-right: 8px;
 }
 
 .editorial-card__title {
   font-family: var(--blog-font-display);
-  font-size: 1.45rem;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
   margin-bottom: 10px;
   color: var(--blog-text-dark);
-  letter-spacing: -0.01em;
-}
-
-.editorial-card__title a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.2s ease;
 }
 
 .editorial-card__title a:hover {
-  color: var(--blog-accent);
+  color: var(--blog-accent-green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .editorial-card__excerpt {
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--blog-text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-/* --- Sidebar --- */
+/* --- Sidebar Section (Bloomberg style newsletter insert) --- */
 .editorial-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 32px;
 }
 
 .newsletter-box {
   background-color: var(--blog-surface);
-  border: 1px solid var(--blog-border);
-  border-radius: var(--blog-radius-lg);
+  border: 1px solid var(--blog-border-thin);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   padding: 28px;
+  margin-bottom: 0px;
 }
 
 .newsletter-box__title {
   font-family: var(--blog-font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 1.6rem;
+  line-height: 1.15;
   margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  color: var(--blog-text-dark);
 }
 
 .newsletter-box__desc {
-  font-size: 0.88rem;
-  line-height: 1.55;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--blog-text-muted);
   margin-bottom: 20px;
 }
 
 .newsletter-box__input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 10px 14px;
   font-family: var(--blog-font-body);
-  font-size: 0.88rem;
-  border: 1px solid var(--blog-border);
-  border-radius: var(--blog-radius);
+  font-size: 0.9rem;
+  border: 1px solid var(--blog-border-thin);
+  border-radius: 4px;
   margin-bottom: 12px;
   outline: none;
-  background-color: var(--blog-bg);
-  transition: border-color 0.2s ease;
+  background-color: #ffffff;
+  color: var(--blog-text-dark);
 }
 
 .newsletter-box__input:focus {
-  border-color: var(--blog-accent);
+  border-color: var(--blog-accent-green);
 }
 
 .newsletter-box__btn {
   width: 100%;
-  background-color: var(--blog-text-dark);
-  color: #FFFFFF;
+  background-color: var(--blog-accent-green);
+  color: var(--blog-surface);
   padding: 12px;
-  font-family: var(--blog-font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   border: none;
-  border-radius: var(--blog-radius);
+  border-radius: 4px;
+  font-family: var(--blog-font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  transition: opacity 0.2s ease;
 }
 
 .newsletter-box__btn:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 .newsletter-box__success {
-  font-family: var(--blog-font-body);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--blog-accent);
+  font-family: var(--blog-font-mono);
+  font-size: 0.75rem;
+  color: var(--blog-accent-green);
   text-align: center;
+  font-weight: 700;
 }
 
-/* --- Author Widget --- */
+/* --- Columnist / Bio Widget --- */
 .author-widget {
-  border-top: 2px solid var(--blog-border);
-  padding-top: 20px;
+  background-color: var(--blog-surface);
+  border: 1px solid var(--blog-border-thin);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 28px;
 }
 
 .author-widget__title {
-  font-family: var(--blog-font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-family: var(--blog-font-sans);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--blog-text-light);
+  letter-spacing: 0.1em;
+  font-weight: 700;
   margin-bottom: 16px;
+  color: var(--blog-text-dark);
 }
 
 .author-widget__profile {
@@ -482,26 +408,26 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: var(--blog-accent);
-  color: #FFFFFF;
+  background-color: var(--blog-accent-green);
+  color: var(--blog-surface);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--blog-font-display);
+  font-family: var(--blog-font-sans);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   flex-shrink: 0;
+  border: none;
 }
 
 .author-widget__bio {
   font-size: 0.85rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--blog-text-muted);
 }
 
 .author-widget__bio strong {
   color: var(--blog-text-dark);
-  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -510,82 +436,81 @@
 
 .post-header {
   text-align: center;
-  padding: 72px 0 36px 0;
-  border-bottom: 1px solid var(--blog-border);
+  padding: 64px 0 32px 0;
+  border-bottom: 1px solid var(--blog-border-thin);
   margin-bottom: 40px;
 }
 
 .post-header__category {
-  font-family: var(--blog-font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-family: var(--blog-font-mono);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--blog-accent);
+  letter-spacing: 0.15em;
+  color: var(--blog-accent-green);
+  font-weight: 700;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .post-header__title {
   font-family: var(--blog-font-display);
-  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--blog-text-dark);
-  max-width: 22ch;
+  max-width: 24ch;
   margin: 0 auto 24px auto;
 }
 
 .post-header__meta-box {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 24px;
-  border: 1px solid var(--blog-border);
+  gap: 16px;
+  padding: 8px 24px;
+  border: 1px solid var(--blog-border-thin);
   border-radius: 100px;
   background-color: var(--blog-surface);
-  font-family: var(--blog-font-body);
+  font-family: var(--blog-font-mono);
   font-size: 0.72rem;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blog-text-light);
+  letter-spacing: 0.08em;
+  color: var(--blog-text-muted);
 }
 
 .post-header__author {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--blog-text-dark);
 }
 
-/* --- Scroll Progress Bar --- */
+/* Dynamic Reading Progress Bar */
 .scroll-progress-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background-color: transparent;
+  height: 4px;
+  background-color: rgba(220,217,208,0.3);
   z-index: 1000;
 }
 
 .scroll-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--blog-accent), var(--blog-accent-purple));
+  background-color: var(--blog-accent-green);
   width: 0%;
   transition: width 0.1s ease-out;
 }
 
-/* --- Share / Action Bar --- */
+/* Bloomberg/WSJ Style Share/Action Bar */
 .action-share-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--blog-border);
-  border-bottom: 1px solid var(--blog-border);
-  padding: 10px 0;
+  border-top: 1px solid var(--blog-text-dark);
+  border-bottom: 1px solid var(--blog-text-dark);
+  padding: 8px 12px;
   margin-bottom: 48px;
-  font-family: var(--blog-font-body);
+  font-family: var(--blog-font-mono);
   font-size: 0.75rem;
 }
 
@@ -598,12 +523,11 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--blog-text-light);
-  font-family: var(--blog-font-body);
+  color: var(--blog-text-muted);
+  font-family: var(--blog-font-mono);
   font-size: 0.75rem;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -615,11 +539,10 @@
 }
 
 .action-share-bar__link {
-  color: var(--blog-text-light);
+  color: var(--blog-text-muted);
   text-decoration: none;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -629,407 +552,437 @@
   color: var(--blog-text-dark);
 }
 
-/* --- Long-form Post Body --- */
+/* --- Long-form Editorial Body Styles (Trabucco Campos approved) --- */
 .post-body {
   font-family: var(--blog-font-body);
-  font-size: 1.08rem;
+  font-size: 1.125rem;
   line-height: 1.85;
-  color: var(--blog-text-mid);
+  color: var(--blog-text-dark);
 }
 
 .post-body p {
   margin-bottom: 28px;
+  text-align: justify;
 }
 
-/* Drop Cap */
+/* Editorial Drop Cap (WSJ traditional styling) */
 .post-body p:first-of-type::first-letter {
   font-family: var(--blog-font-display);
-  font-size: 4.2rem;
-  font-weight: 800;
-  line-height: 0.82;
+  font-size: 4.8rem;
+  line-height: 0.8;
   float: left;
-  margin-top: 6px;
+  margin-top: 4px;
   margin-right: 12px;
-  margin-bottom: 0;
-  color: var(--blog-accent);
+  margin-bottom: 0px;
+  color: var(--blog-text-dark);
+  font-weight: 400;
 }
 
 .post-body h2 {
   font-family: var(--blog-font-display);
-  font-size: 1.65rem;
-  font-weight: 700;
+  font-size: 1.85rem;
+  font-weight: 400;
   line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin-top: 52px;
-  margin-bottom: 20px;
+  margin-top: 48px;
+  margin-bottom: 18px;
   color: var(--blog-text-dark);
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--blog-border);
+  border-bottom: 1px solid var(--blog-border-thin);
+  padding-bottom: 8px;
 }
 
-/* Blockquote / Pull Quote */
+/* Pulled quotes */
 .post-body blockquote {
   font-family: var(--blog-font-display);
-  font-size: 1.55rem;
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--blog-accent-purple);
+  font-size: 1.65rem;
+  line-height: 1.4;
+  color: var(--blog-accent-green);
   text-align: center;
-  margin: 52px 0;
-  padding: 32px 40px;
-  border-top: 2px solid var(--blog-border);
-  border-bottom: 2px solid var(--blog-border);
-  letter-spacing: -0.01em;
+  font-style: italic;
+  margin: 48px 0;
+  padding: 24px 40px;
+  border-top: 1px solid var(--blog-text-dark);
+  border-bottom: 1px solid var(--blog-text-dark);
+  background-color: var(--blog-surface);
 }
 
 .post-body blockquote::before {
-  content: "\201C";
-  font-size: 3.5rem;
+  content: "“";
+  font-size: 4rem;
   line-height: 0;
-  vertical-align: -14px;
+  vertical-align: -18px;
   font-family: var(--blog-font-display);
-  font-weight: 300;
   opacity: 0.3;
 }
 
 .post-body blockquote::after {
-  content: "\201D";
-  font-size: 3.5rem;
+  content: "”";
+  font-size: 4rem;
   line-height: 0;
-  vertical-align: -24px;
+  vertical-align: -30px;
   font-family: var(--blog-font-display);
-  font-weight: 300;
   opacity: 0.3;
 }
 
 .post-body ul {
-  list-style-type: none;
-  padding-left: 0;
+  list-style-type: square;
+  padding-left: 24px;
   margin-bottom: 28px;
 }
 
 .post-body li {
-  margin-bottom: 14px;
-  padding-left: 24px;
-  position: relative;
+  margin-bottom: 12px;
+  padding-left: 4px;
 }
 
-.post-body li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 8px;
-  height: 8px;
-  background-color: var(--blog-accent);
-  border-radius: 2px;
+/* Footer Section Inside Detail */
+.post-footer-cta {
+  margin-top: 64px;
+  border-top: 1px solid var(--blog-text-dark);
+  padding-top: 40px;
 }
 
-/* --- Back Navigation --- */
 .back-to-writing-nav {
   text-align: center;
   margin: 64px 0 48px 0;
 }
 
 .back-to-writing-btn {
-  font-family: var(--blog-font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-family: var(--blog-font-mono);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  font-weight: 700;
   color: var(--blog-text-dark);
-  border: 1px solid var(--blog-border-dark);
-  border-radius: 100px;
-  padding: 14px 32px;
+  border: 1px solid var(--blog-text-dark);
+  padding: 12px 28px;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   display: inline-block;
 }
 
 .back-to-writing-btn:hover {
   background-color: var(--blog-text-dark);
-  color: #FFFFFF;
-  transform: translateY(-1px);
+  color: var(--blog-surface);
 }
 
-/* --- Footer --- */
+/* --- Blog Page Header & Footer (Integrated but stylised) --- */
+.blog-nav {
+  border-bottom: 1px solid var(--blog-border-thin);
+  background-color: rgba(250, 249, 245, 0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.blog-nav__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.blog-nav__logo {
+  font-family: var(--blog-font-display);
+  font-size: 1.4rem;
+  color: var(--blog-text-dark);
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.blog-nav__logo span {
+  color: var(--blog-accent-green);
+  font-weight: 700;
+}
+
+.blog-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.blog-nav__link {
+  font-family: var(--blog-font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blog-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-nav__link:hover {
+  color: var(--blog-text-dark);
+}
+
+.blog-nav__link--active {
+  color: var(--blog-text-dark);
+  font-weight: 700;
+}
+
+.blog-nav__btn {
+  background-color: var(--blog-accent-green);
+  color: var(--blog-surface);
+  font-family: var(--blog-font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+.blog-nav__btn:hover {
+  background-color: var(--blog-text-dark);
+}
+
 .blog-footer {
-  border-top: 1px solid var(--blog-border);
+  border-top: 1px solid var(--blog-border-thin);
   padding: 48px 0;
+  background-color: #FAF9F5;
   text-align: center;
 }
 
 .blog-footer__copyright {
-  font-family: var(--blog-font-body);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-family: var(--blog-font-mono);
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blog-text-light);
+  letter-spacing: 0.05em;
+  color: var(--blog-text-muted);
   margin-top: 12px;
 }
 
 /* ==========================================================================
-   About Page Styles (legacy class compat + new)
+   Refined NYT Card System
    ========================================================================== */
 
-/* Legacy class mappings for about page */
-.blog-header { composes: blog-nav; }
-
-.blog-container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 32px;
+.nyt-card-wrapper {
+  perspective: 1000px;
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 0 16px;
 }
 
-.blog-header__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 72px;
-}
-
-.blog-header__logo {
-  font-family: var(--blog-font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--blog-text-dark);
-  text-decoration: none;
-  letter-spacing: -0.02em;
-}
-
-.blog-header__logo span {
-  color: var(--blog-accent);
-}
-
-.blog-header__nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.blog-header__link {
-  font-family: var(--blog-font-body);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blog-text-muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.blog-header__link:hover {
-  color: var(--blog-text-dark);
-}
-
-.blog-header__btn {
-  background-color: var(--blog-accent);
-  color: #FFFFFF;
-  font-family: var(--blog-font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 10px 20px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-.blog-header__btn:hover {
-  background-color: var(--blog-accent-hover);
-}
-
-.blog-narrow {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.blog-title {
-  font-family: var(--blog-font-display);
-  font-weight: 700;
-  color: var(--blog-text-dark);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
-
-.text-4xl { font-size: 2.4rem; }
-.text-center { text-align: center; }
-
-/* About page post content */
-.post-content {
-  font-family: var(--blog-font-body);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--blog-text-mid);
-}
-
-.post-content p {
-  margin-bottom: 24px;
-}
-
-.post-content strong {
-  font-weight: 600;
-  color: var(--blog-text-dark);
-}
-
-.post-content h3 {
-  font-family: var(--blog-font-display);
-  font-size: 1.45rem;
-  font-weight: 700;
-  margin-top: 48px;
-  margin-bottom: 16px;
-  color: var(--blog-text-dark);
-  letter-spacing: -0.01em;
-}
-
-/* Subscribe card */
-.subscribe-card {
+.nyt-card {
   background-color: var(--blog-surface);
-  border: 1px solid var(--blog-border);
-  border-radius: var(--blog-radius-lg);
-  padding: 36px;
-}
-
-.subscribe-card__title {
-  font-family: var(--blog-font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-
-.subscribe-card__desc {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--blog-text-muted);
-  margin-bottom: 24px;
-}
-
-.subscribe-form {
-  display: flex;
-  gap: 12px;
-}
-
-.subscribe-form__input {
-  flex: 1;
-  padding: 12px 16px;
-  font-family: var(--blog-font-body);
-  font-size: 0.88rem;
-  border: 1px solid var(--blog-border);
-  border-radius: var(--blog-radius);
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.subscribe-form__input:focus {
-  border-color: var(--blog-accent);
-}
-
-.subscribe-form__btn {
-  background-color: var(--blog-text-dark);
-  color: #FFFFFF;
-  padding: 12px 24px;
-  font-family: var(--blog-font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border: none;
-  border-radius: var(--blog-radius);
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-}
-
-.subscribe-form__btn:hover {
-  opacity: 0.88;
-}
-
-.subscribe-success {
-  font-family: var(--blog-font-body);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--blog-accent);
-  padding: 16px;
-}
-
-/* About page footer */
-.blog-footer__inner {
+  color: var(--blog-text-dark);
+  border: 1px solid var(--blog-border-thin);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+}
+
+/* Card Header Logo */
+.nyt-card__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px 12px 16px;
+}
+
+.nyt-card__logo {
+  font-family: var(--blog-font-logo);
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--blog-text-dark);
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.nyt-card__divider {
+  border: none;
+  border-top: 1px solid var(--blog-border-thin);
+  margin: 0;
+  width: 100%;
+}
+
+/* Card Body Content */
+.nyt-card__body {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nyt-card__category {
+  font-family: var(--blog-font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--blog-text-dark);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.nyt-card__title {
+  font-family: var(--blog-font-display);
+  font-size: clamp(1.8rem, 5vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--blog-text-dark);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+.nyt-card__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nyt-card__title a:hover {
+  opacity: 0.85;
+}
+
+.nyt-card__subtitle {
+  font-family: var(--blog-font-body);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--blog-text-muted);
+  margin: 0 0 24px 0;
+}
+
+/* Actions Row */
+.nyt-card__actions {
+  display: flex;
   align-items: center;
   gap: 12px;
+  margin-bottom: 8px;
 }
 
-.blog-footer__links {
-  display: flex;
-  gap: 24px;
-}
-
-.blog-footer__link {
-  font-family: var(--blog-font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--blog-text-muted);
+/* Pill Button */
+.nyt-card__btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--blog-surface);
+  border: 1px solid #DCD9D0;
+  border-radius: 9999px;
+  padding: 8px 18px;
+  font-family: var(--blog-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blog-text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
-.blog-footer__link:hover {
+.nyt-card__btn-pill:hover {
+  background-color: #f7f6f2;
+  border-color: #88857f;
+}
+
+.nyt-card__btn-pill svg {
+  color: var(--blog-text-dark);
+  flex-shrink: 0;
+}
+
+/* Circle Button */
+.nyt-card__btn-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--blog-surface);
+  border: 1px solid #DCD9D0;
+  border-radius: 50%;
+  color: var(--blog-text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.nyt-card__btn-circle:hover {
+  background-color: #f7f6f2;
+  border-color: #88857f;
+}
+
+.nyt-card__btn-circle svg {
+  flex-shrink: 0;
+}
+
+/* Image Container */
+.nyt-card__image-container {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #f7f6f2;
+  border-top: 1px solid var(--blog-border-thin);
+  position: relative;
+}
+
+.nyt-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.nyt-card:hover .nyt-card__image {
+  transform: scale(1.02);
+}
+
+/* Article Content Container inside NYT Card */
+.nyt-card__article-content {
+  padding: 32px 40px;
+  border-top: 1px solid var(--blog-border-thin);
+  background-color: var(--blog-surface);
+}
+
+.nyt-card__article-content p {
+  margin-bottom: 24px;
+  text-align: justify;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #222222;
+}
+
+.nyt-card__article-content h2 {
+  font-family: var(--blog-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 40px;
+  margin-bottom: 16px;
   color: var(--blog-text-dark);
 }
 
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
+.nyt-card__article-content blockquote {
+  font-family: var(--blog-font-display);
+  font-size: 1.45rem;
+  line-height: 1.4;
+  color: var(--blog-accent-green);
+  text-align: center;
+  font-style: italic;
+  margin: 36px 0;
+  padding: 20px 30px;
+  border-top: 1px solid var(--blog-text-dark);
+  border-bottom: 1px solid var(--blog-text-dark);
+}
 
-@media (max-width: 768px) {
-  .blog-nav__links {
-    gap: 16px;
+.nyt-card__article-content ul {
+  list-style-type: square;
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.nyt-card__article-content li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: #222222;
+}
+
+@media (max-width: 600px) {
+  .nyt-card__body {
+    padding: 16px 20px;
   }
-
-  .blog-nav__link {
-    font-size: 0.72rem;
-  }
-
-  .blog-nav__btn {
-    padding: 8px 14px;
-    font-size: 0.68rem;
-  }
-
-  .masthead {
-    padding: 48px 0 16px 0;
-  }
-
-  .dateline-bar {
-    font-size: 0.6rem;
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: center;
-  }
-
-  .editorial-grid__main {
-    padding-right: 0;
-    border-right: none;
-  }
-
-  .action-share-bar {
-    flex-direction: column;
-    gap: 12px;
-    padding: 14px 0;
-  }
-
-  .subscribe-form {
-    flex-direction: column;
-  }
-
-  .blog-header__nav {
-    gap: 16px;
-  }
-
-  .blog-header__link {
-    font-size: 0.72rem;
+  .nyt-card__article-content {
+    padding: 24px 20px;
   }
 }

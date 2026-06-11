@@ -56,59 +56,72 @@ export default async function PostPage({ params }) {
         </div>
       </header>
 
-      <main className="blog-width-limit py-12">
-        <article className="blog-width-narrow">
-          
-          {/* Post Header */}
-          <header className="post-header">
-            <span className="post-header__category">{post.category}</span>
-            <h1 className="post-header__title">{post.title}</h1>
-            
-            <div className="post-header__meta-box">
-              <span className="post-header__author">By {post.author}</span>
-              <span>•</span>
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-            </div>
-          </header>
-
-          {/* Scroll progress & share actions */}
-          <PostClient postTitle={post.title} />
-
-          {/* Post Content */}
-          <div className="post-body">
-            {post.blocks.map((block, idx) => {
-              switch (block.type) {
-                case "paragraph":
-                  return <p key={idx}>{block.text}</p>;
-                case "heading":
-                  return <h2 key={idx}>{block.text}</h2>;
-                case "quote":
-                  return <blockquote key={idx}>{block.text}</blockquote>;
-                case "list":
-                  return (
-                    <ul key={idx}>
-                      {block.items.map((item, itemIdx) => (
-                        <li key={itemIdx}>{item}</li>
-                      ))}
-                    </ul>
-                  );
-                default:
-                  return null;
-              }
-            })}
-          </div>
-
-          {/* End of article footer line */}
-          <div className="broadsheet-double-rule" style={{ marginTop: "64px" }}></div>
-
-          <div className="back-to-writing-nav">
-            <Link href="/" className="back-to-writing-btn">
-              ← Back to Dispatch
+      <main className="nyt-card-wrapper py-12">
+        <article className="nyt-card">
+          {/* Card Header Logo (representing NYT logo) */}
+          <div className="nyt-card__logo-container">
+            <Link href="/" className="nyt-card__logo">
+              The Health Herald
             </Link>
           </div>
+          <hr className="nyt-card__divider" />
 
+          {/* Card Body */}
+          <div className="nyt-card__body">
+            <span className="nyt-card__category">{post.category}</span>
+            <h1 className="nyt-card__title">{post.title}</h1>
+            <p className="nyt-card__subtitle">{post.excerpt}</p>
+
+            {/* Client interactions row: share/bookmark buttons */}
+            <PostClient postTitle={post.title} />
+          </div>
+
+          {/* Card Image */}
+          <div className="nyt-card__image-container">
+            <img
+              src={`/images/${
+                post.slug === "digitising-nhif"
+                  ? "nhif_illustration"
+                  : post.slug === "mobile-health-rails"
+                  ? "money_illustration"
+                  : "county_illustration"
+              }.png`}
+              alt={post.title}
+              className="nyt-card__image"
+            />
+          </div>
+
+          {/* Article Full Body */}
+          <div className="nyt-card__article-content">
+            <div className="post-body">
+              {post.blocks.map((block, idx) => {
+                switch (block.type) {
+                  case "paragraph":
+                    return <p key={idx}>{block.text}</p>;
+                  case "heading":
+                    return <h2 key={idx}>{block.text}</h2>;
+                  case "quote":
+                    return <blockquote key={idx}>{block.text}</blockquote>;
+                  case "list":
+                    return (
+                      <ul key={idx}>
+                        {block.items.map((item, itemIdx) => (
+                          <li key={itemIdx}>{item}</li>
+                        ))}
+                      </ul>
+                    );
+                  default:
+                    return null;
+                }
+              })}
+            </div>
+
+            <div className="back-to-writing-nav" style={{ marginTop: "40px" }}>
+              <Link href="/" className="back-to-writing-btn">
+                ← Back to Dispatch
+              </Link>
+            </div>
+          </div>
         </article>
       </main>
 
