@@ -1,40 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+SC:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 /* ==========================================================================
-   Health Herald — Botanical Editorial Design System
-   Inspired by artisanal label design: Wild Roots, apothecary, and
-   fine broadsheet typography. Warm, organic, refined.
+   Health Herald — Modern Editorial Data System
+   Typography: Geometric sans-serif (Outfit + Inter + Space Mono)
+   Inspired by Milkvine/Bloomberg data-driven presentation style
    ========================================================================== */
 
 :root {
-  /* Palette — warm parchment + deep botanical tones */
-  --hh-parchment:     #F4EDE4;       /* Warm aged paper */
-  --hh-parchment-alt: #EDE5DA;       /* Slightly deeper cream for cards */
-  --hh-surface:       #FDFAF6;       /* Lightest surface, near-white warmth */
-  --hh-ink:           #2C2421;       /* Rich dark brown-black, softer than pure black */
-  --hh-ink-light:     #5C524A;       /* Warm muted brown for secondary text */
-  --hh-ink-faint:     #8A7F76;       /* Gentle stone for tertiary text */
-  --hh-rule:          #D4CBC0;       /* Hairline rules, warm grey */
-  --hh-rule-dark:     #A69D93;       /* Emphasized rules */
-  --hh-berry:         #6B2D5B;       /* Deep plum/berry — primary accent (from berries) */
-  --hh-berry-light:   #8A4578;       /* Lighter berry for hover states */
-  --hh-leaf:          #4A6741;        /* Muted botanical green */
-  --hh-leaf-light:    #6A8A5E;       /* Lighter green for subtle accents */
+  --blog-bg: #FFFFFF;
+  --blog-surface: #F7F7F8;
+  --blog-text-dark: #1A1A1A;
+  --blog-text-mid: #3D3D3D;
+  --blog-text-muted: #6B6B6B;
+  --blog-text-light: #9A9A9A;
+  --blog-border: #E8E8E8;
+  --blog-border-dark: #D0D0D0;
+  --blog-accent: #2ECB71;            /* Teal-green from reference */
+  --blog-accent-hover: #27AE60;
+  --blog-accent-purple: #6C5CE7;     /* Purple accent from reference */
+  --blog-accent-purple-light: #A29BFE;
 
-  /* Typography stack */
-  --hh-font-display:   "Cormorant Garamond", "Garamond", "Times New Roman", serif;
-  --hh-font-smallcaps: "Cormorant SC", "Cormorant Garamond", serif;
-  --hh-font-body:      "EB Garamond", "Garamond", Georgia, serif;
-  --hh-font-label:     "Josefin Sans", "Gill Sans", "Helvetica Neue", sans-serif;
+  --blog-font-display: "Outfit", "Inter", system-ui, -apple-system, sans-serif;
+  --blog-font-body: "Inter", "Outfit", system-ui, -apple-system, sans-serif;
+  --blog-font-mono: "Space Mono", "Courier New", monospace;
+
+  --blog-radius: 8px;
+  --blog-radius-lg: 16px;
 }
 
-/* --- Global Reset & Base --- */
+/* --- Layout Base --- */
 .blog-theme {
-  background-color: var(--hh-parchment);
-  color: var(--hh-ink);
-  font-family: var(--hh-font-body);
-  font-size: 1.125rem;
-  line-height: 1.85;
+  background-color: var(--blog-bg);
+  color: var(--blog-text-dark);
+  font-family: var(--blog-font-body);
+  font-size: 1rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -44,11 +44,6 @@
   box-sizing: border-box;
 }
 
-.blog-theme a {
-  color: inherit;
-}
-
-/* --- Layout Constraints --- */
 .blog-width-limit {
   max-width: 1140px;
   margin: 0 auto;
@@ -56,22 +51,23 @@
 }
 
 .blog-width-narrow {
-  max-width: 660px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
-/* --- Utility --- */
-.py-8  { padding-top: 2rem; padding-bottom: 2rem; }
-.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+/* Utility spacing */
+.py-8 { padding-top: 32px; padding-bottom: 32px; }
+.py-12 { padding-top: 48px; padding-bottom: 48px; }
+.py-16 { padding-top: 64px; padding-bottom: 64px; }
+.mt-12 { margin-top: 48px; }
+.mb-6 { margin-bottom: 24px; }
 
-/* ==========================================================================
-   Navigation — Refined, minimal, label-like
-   ========================================================================== */
-
+/* --- Navigation --- */
 .blog-nav {
-  border-bottom: 1px solid var(--hh-rule);
-  background-color: rgba(244, 237, 228, 0.92);
+  border-bottom: 1px solid var(--blog-border);
+  background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -85,17 +81,16 @@
 }
 
 .blog-nav__logo {
-  font-family: var(--hh-font-smallcaps);
+  font-family: var(--blog-font-display);
   font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: var(--hh-ink);
+  font-weight: 700;
+  color: var(--blog-text-dark);
   text-decoration: none;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .blog-nav__logo span {
-  color: var(--hh-berry);
+  color: var(--blog-accent);
 }
 
 .blog-nav__links {
@@ -105,123 +100,106 @@
 }
 
 .blog-nav__link {
-  font-family: var(--hh-font-label);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--hh-ink-light);
+  letter-spacing: 0.06em;
+  color: var(--blog-text-muted);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .blog-nav__link:hover {
-  color: var(--hh-berry);
+  color: var(--blog-text-dark);
 }
 
 .blog-nav__btn {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 500;
+  background-color: var(--blog-accent);
+  color: #FFFFFF;
+  font-family: var(--blog-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--hh-surface);
-  background-color: var(--hh-berry);
-  padding: 8px 20px;
+  letter-spacing: 0.06em;
+  padding: 10px 20px;
+  border-radius: 100px;
   text-decoration: none;
-  border-radius: 2px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .blog-nav__btn:hover {
-  background-color: var(--hh-berry-light);
+  background-color: var(--blog-accent-hover);
+  transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   Masthead — Elegant, centered, apothecary label feel
-   ========================================================================== */
-
+/* --- Masthead --- */
 .masthead {
   text-align: center;
-  padding: 64px 0 24px 0;
-  position: relative;
-}
-
-.masthead::before,
-.masthead::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 1px;
-  background-color: var(--hh-rule-dark);
-  margin: 0 auto 24px auto;
-}
-
-.masthead::after {
-  margin: 24px auto 0 auto;
+  padding: 72px 0 24px 0;
 }
 
 .masthead__sub-label {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--hh-berry);
+  letter-spacing: 0.18em;
+  color: var(--blog-accent);
   display: block;
   margin-bottom: 16px;
 }
 
 .masthead__title {
-  font-family: var(--hh-font-display);
+  font-family: var(--blog-font-display);
   font-size: clamp(3.2rem, 9vw, 6rem);
-  font-weight: 300;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  color: var(--hh-ink);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--blog-text-dark);
   margin: 0;
-  font-style: italic;
 }
 
 .masthead__tagline {
-  font-family: var(--hh-font-body);
-  font-style: italic;
+  font-family: var(--blog-font-body);
   font-size: 1.05rem;
-  color: var(--hh-ink-light);
+  font-weight: 400;
+  color: var(--blog-text-muted);
   max-width: 520px;
   margin: 20px auto 0 auto;
   line-height: 1.6;
 }
 
-/* ==========================================================================
-   Dateline Bar — Thin, elegant, label-format
-   ========================================================================== */
-
+/* --- Dateline Bar --- */
 .dateline-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--hh-font-label);
-  font-size: 0.62rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--hh-ink-faint);
-  border-top: 1px solid var(--hh-rule-dark);
-  border-bottom: 1px solid var(--hh-rule-dark);
-  padding: 10px 16px;
+  letter-spacing: 0.12em;
+  color: var(--blog-text-light);
+  border-top: 1px solid var(--blog-border);
+  border-bottom: 1px solid var(--blog-border);
+  padding: 10px 0;
   margin-bottom: 48px;
 }
 
 .dateline-bar__issue {
-  font-weight: 500;
-  color: var(--hh-ink-light);
+  font-weight: 600;
+  color: var(--blog-text-muted);
 }
 
-/* ==========================================================================
-   Editorial Grid — Asymmetric two-column layout
-   ========================================================================== */
+/* --- Broadsheet Double Rule (simplified) --- */
+.broadsheet-double-rule {
+  border-top: 2px solid var(--blog-border);
+  padding: 10px 0 0 0;
+  margin: 40px 0 28px 0;
+}
 
+/* --- Editorial Grid --- */
 .editorial-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -230,152 +208,129 @@
 
 @media (min-width: 1024px) {
   .editorial-grid {
-    grid-template-columns: 7fr 3fr;
+    grid-template-columns: 1fr 340px;
     gap: 56px;
   }
 
   .editorial-grid__main {
-    border-right: 1px solid var(--hh-rule);
     padding-right: 56px;
+    border-right: 1px solid var(--blog-border);
   }
 }
 
-/* ==========================================================================
-   Featured Article — Hero treatment, botanical elegance
-   ========================================================================== */
-
+/* --- Featured Article --- */
 .featured-article {
-  margin-bottom: 48px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid var(--hh-rule);
+  margin-bottom: 40px;
 }
 
 .featured-article__label {
-  font-family: var(--hh-font-label);
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-family: var(--blog-font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--hh-berry);
+  letter-spacing: 0.14em;
+  color: var(--blog-accent);
   display: inline-block;
   margin-bottom: 16px;
   padding-bottom: 4px;
-  border-bottom: 1px solid var(--hh-berry);
+  border-bottom: 2px solid var(--blog-accent);
 }
 
 .featured-article__title {
-  font-family: var(--hh-font-display);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400;
+  font-family: var(--blog-font-display);
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--hh-ink);
-  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  color: var(--blog-text-dark);
+  margin-bottom: 16px;
 }
 
 .featured-article__title a {
   text-decoration: none;
-  transition: color 0.3s ease;
+  color: inherit;
+  transition: color 0.2s ease;
 }
 
 .featured-article__title a:hover {
-  color: var(--hh-berry);
+  color: var(--blog-accent);
 }
 
 .featured-article__meta {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--hh-ink-faint);
+  font-family: var(--blog-font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--blog-text-light);
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .featured-article__byline {
-  font-weight: 500;
-  color: var(--hh-ink-light);
+  font-weight: 600;
+  color: var(--blog-text-mid);
 }
 
 .featured-article__excerpt {
-  font-family: var(--hh-font-body);
-  font-size: 1.1rem;
-  line-height: 1.75;
-  color: var(--hh-ink-light);
+  font-family: var(--blog-font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--blog-text-muted);
   margin-bottom: 24px;
 }
 
 .read-more-link {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-family: var(--blog-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--hh-berry);
+  letter-spacing: 0.08em;
+  color: var(--blog-accent);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease, gap 0.3s ease;
+  transition: gap 0.2s ease;
 }
 
 .read-more-link::after {
   content: "→";
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .read-more-link:hover {
-  color: var(--hh-berry-light);
+  gap: 10px;
 }
 
 .read-more-link:hover::after {
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
-/* ==========================================================================
-   Section Divider — Elegant thin rule with centered label
-   ========================================================================== */
-
-.broadsheet-double-rule {
-  position: relative;
-  border-top: 1px solid var(--hh-rule-dark);
-  padding: 0;
-  margin: 8px 0 32px 0;
-  text-align: center;
-}
-
+/* --- Section Title --- */
 .secondary-section-title {
-  font-family: var(--hh-font-smallcaps);
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--hh-ink-light);
+  font-family: var(--blog-font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
-  background-color: var(--hh-parchment);
-  padding: 0 20px;
-  position: relative;
-  top: -0.6em;
-  display: inline-block;
+  letter-spacing: 0.14em;
+  color: var(--blog-text-mid);
+  display: block;
 }
 
-/* ==========================================================================
-   Editorial Cards — Secondary articles
-   ========================================================================== */
-
+/* --- Article Card Flow --- */
 .card-flow {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 32px;
 }
 
 .editorial-card {
-  padding: 28px 0;
-  border-bottom: 1px solid var(--hh-rule);
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--blog-border);
 }
 
 .editorial-card:last-child {
@@ -383,145 +338,138 @@
 }
 
 .editorial-card__meta {
-  font-family: var(--hh-font-label);
-  font-size: 0.6rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--hh-ink-faint);
-  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+  color: var(--blog-text-light);
+  margin-bottom: 10px;
 }
 
 .editorial-card__category {
-  color: var(--hh-berry);
-  font-weight: 500;
+  color: var(--blog-accent);
+  font-weight: 600;
   margin-right: 8px;
 }
 
 .editorial-card__title {
-  font-family: var(--hh-font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-family: var(--blog-font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
   line-height: 1.25;
   margin-bottom: 10px;
-  color: var(--hh-ink);
+  color: var(--blog-text-dark);
+  letter-spacing: -0.01em;
 }
 
 .editorial-card__title a {
   text-decoration: none;
-  transition: color 0.3s ease;
+  color: inherit;
+  transition: color 0.2s ease;
 }
 
 .editorial-card__title a:hover {
-  color: var(--hh-berry);
+  color: var(--blog-accent);
 }
 
 .editorial-card__excerpt {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.65;
-  color: var(--hh-ink-light);
+  color: var(--blog-text-muted);
   margin-bottom: 14px;
 }
 
-/* ==========================================================================
-   Sidebar — Newsletter & Author widgets
-   ========================================================================== */
-
+/* --- Sidebar --- */
 .editorial-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 36px;
 }
 
-/* Newsletter — parchment card with thin border */
 .newsletter-box {
-  background-color: var(--hh-surface);
-  border: 1px solid var(--hh-rule);
-  padding: 28px 24px;
+  background-color: var(--blog-surface);
+  border: 1px solid var(--blog-border);
+  border-radius: var(--blog-radius-lg);
+  padding: 28px;
 }
 
 .newsletter-box__title {
-  font-family: var(--hh-font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-style: italic;
+  font-family: var(--blog-font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 10px;
-  color: var(--hh-ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .newsletter-box__desc {
   font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--hh-ink-light);
+  line-height: 1.55;
+  color: var(--blog-text-muted);
   margin-bottom: 20px;
 }
 
 .newsletter-box__input {
   width: 100%;
-  padding: 10px 14px;
-  font-family: var(--hh-font-body);
-  font-size: 0.9rem;
-  border: 1px solid var(--hh-rule);
-  background-color: var(--hh-parchment);
-  color: var(--hh-ink);
-  margin-bottom: 10px;
+  padding: 12px 16px;
+  font-family: var(--blog-font-body);
+  font-size: 0.88rem;
+  border: 1px solid var(--blog-border);
+  border-radius: var(--blog-radius);
+  margin-bottom: 12px;
   outline: none;
-  transition: border-color 0.3s ease;
+  background-color: var(--blog-bg);
+  transition: border-color 0.2s ease;
 }
 
 .newsletter-box__input:focus {
-  border-color: var(--hh-berry);
-}
-
-.newsletter-box__input::placeholder {
-  color: var(--hh-ink-faint);
-  font-style: italic;
+  border-color: var(--blog-accent);
 }
 
 .newsletter-box__btn {
   width: 100%;
-  background-color: var(--hh-berry);
-  color: var(--hh-surface);
-  padding: 10px;
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 500;
+  background-color: var(--blog-text-dark);
+  color: #FFFFFF;
+  padding: 12px;
+  font-family: var(--blog-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   border: none;
+  border-radius: var(--blog-radius);
   cursor: pointer;
-  border-radius: 2px;
-  transition: background-color 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
 .newsletter-box__btn:hover {
-  background-color: var(--hh-berry-light);
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
 .newsletter-box__success {
-  font-family: var(--hh-font-label);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--hh-leaf);
+  font-family: var(--blog-font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--blog-accent);
   text-align: center;
-  letter-spacing: 0.05em;
 }
 
-/* Author Widget — refined bio card */
+/* --- Author Widget --- */
 .author-widget {
-  border-top: 1px solid var(--hh-rule-dark);
-  padding-top: 24px;
+  border-top: 2px solid var(--blog-border);
+  padding-top: 20px;
 }
 
 .author-widget__title {
-  font-family: var(--hh-font-smallcaps);
-  font-size: 0.8rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  margin-bottom: 20px;
-  color: var(--hh-ink-light);
+  letter-spacing: 0.14em;
+  color: var(--blog-text-light);
+  margin-bottom: 16px;
 }
 
 .author-widget__profile {
@@ -531,88 +479,86 @@
 }
 
 .author-widget__avatar {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background-color: var(--hh-berry);
-  color: var(--hh-surface);
+  background-color: var(--blog-accent);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--hh-font-smallcaps);
-  font-weight: 400;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
+  font-family: var(--blog-font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
   flex-shrink: 0;
 }
 
 .author-widget__bio {
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--hh-ink-light);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--blog-text-muted);
 }
 
 .author-widget__bio strong {
-  color: var(--hh-ink);
+  color: var(--blog-text-dark);
   font-weight: 600;
 }
 
 /* ==========================================================================
-   Article Detail Styles — Long-form reading experience
+   Article Post Detail Styles
    ========================================================================== */
 
 .post-header {
   text-align: center;
-  padding: 72px 0 40px 0;
-  border-bottom: 1px solid var(--hh-rule);
-  margin-bottom: 48px;
+  padding: 72px 0 36px 0;
+  border-bottom: 1px solid var(--blog-border);
+  margin-bottom: 40px;
 }
 
 .post-header__category {
-  font-family: var(--hh-font-label);
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-family: var(--blog-font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--hh-berry);
+  letter-spacing: 0.18em;
+  color: var(--blog-accent);
   display: block;
   margin-bottom: 20px;
 }
 
 .post-header__title {
-  font-family: var(--hh-font-display);
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--hh-ink);
+  font-family: var(--blog-font-display);
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--blog-text-dark);
   max-width: 22ch;
-  margin: 0 auto 28px auto;
-  font-style: italic;
+  margin: 0 auto 24px auto;
 }
 
 .post-header__meta-box {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  padding: 8px 24px;
-  border: 1px solid var(--hh-rule);
+  padding: 10px 24px;
+  border: 1px solid var(--blog-border);
   border-radius: 100px;
-  background-color: var(--hh-surface);
-  font-family: var(--hh-font-label);
-  font-size: 0.6rem;
-  font-weight: 400;
+  background-color: var(--blog-surface);
+  font-family: var(--blog-font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--hh-ink-faint);
+  letter-spacing: 0.06em;
+  color: var(--blog-text-light);
 }
 
 .post-header__author {
-  font-weight: 500;
-  color: var(--hh-ink-light);
+  font-weight: 600;
+  color: var(--blog-text-dark);
 }
 
-/* Reading Progress Bar */
+/* --- Scroll Progress Bar --- */
 .scroll-progress-container {
   position: fixed;
   top: 0;
@@ -625,22 +571,22 @@
 
 .scroll-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--hh-berry), var(--hh-berry-light));
+  background: linear-gradient(90deg, var(--blog-accent), var(--blog-accent-purple));
   width: 0%;
   transition: width 0.1s ease-out;
 }
 
-/* Share/Action Bar */
+/* --- Share / Action Bar --- */
 .action-share-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--hh-rule);
-  border-bottom: 1px solid var(--hh-rule);
-  padding: 10px 16px;
+  border-top: 1px solid var(--blog-border);
+  border-bottom: 1px solid var(--blog-border);
+  padding: 10px 0;
   margin-bottom: 48px;
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
+  font-family: var(--blog-font-body);
+  font-size: 0.75rem;
 }
 
 .action-share-bar__group {
@@ -652,116 +598,108 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--hh-ink-faint);
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 400;
+  color: var(--blog-text-light);
+  font-family: var(--blog-font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .action-share-bar__btn:hover {
-  color: var(--hh-berry);
+  color: var(--blog-text-dark);
 }
 
 .action-share-bar__link {
-  color: var(--hh-ink-faint);
+  color: var(--blog-text-light);
   text-decoration: none;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease;
 }
 
 .action-share-bar__link:hover {
-  color: var(--hh-berry);
+  color: var(--blog-text-dark);
 }
 
-/* ==========================================================================
-   Post Body — Editorial long-form reading
-   ========================================================================== */
-
+/* --- Long-form Post Body --- */
 .post-body {
-  font-family: var(--hh-font-body);
-  font-size: 1.125rem;
-  line-height: 1.9;
-  color: var(--hh-ink);
+  font-family: var(--blog-font-body);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--blog-text-mid);
 }
 
 .post-body p {
   margin-bottom: 28px;
-  text-indent: 1.5em;
 }
 
-.post-body p:first-of-type {
-  text-indent: 0;
-}
-
-/* Editorial Drop Cap — refined, lighter weight */
+/* Drop Cap */
 .post-body p:first-of-type::first-letter {
-  font-family: var(--hh-font-display);
-  font-size: 4.5rem;
-  line-height: 0.75;
+  font-family: var(--blog-font-display);
+  font-size: 4.2rem;
+  font-weight: 800;
+  line-height: 0.82;
   float: left;
   margin-top: 6px;
   margin-right: 12px;
   margin-bottom: 0;
-  color: var(--hh-berry);
-  font-weight: 300;
-  font-style: italic;
+  color: var(--blog-accent);
 }
 
 .post-body h2 {
-  font-family: var(--hh-font-display);
-  font-size: 1.75rem;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.3;
-  margin-top: 56px;
+  font-family: var(--blog-font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 52px;
   margin-bottom: 20px;
-  color: var(--hh-ink);
+  color: var(--blog-text-dark);
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--hh-rule);
+  border-bottom: 1px solid var(--blog-border);
 }
 
-/* Pull Quotes — centered, elegant, berry-toned */
+/* Blockquote / Pull Quote */
 .post-body blockquote {
-  font-family: var(--hh-font-display);
+  font-family: var(--blog-font-display);
   font-size: 1.55rem;
+  font-weight: 500;
   line-height: 1.45;
-  color: var(--hh-berry);
+  color: var(--blog-accent-purple);
   text-align: center;
-  font-style: italic;
-  font-weight: 300;
-  margin: 56px 0;
-  padding: 32px 48px;
-  border-top: 1px solid var(--hh-rule-dark);
-  border-bottom: 1px solid var(--hh-rule-dark);
-  background-color: transparent;
-  position: relative;
+  margin: 52px 0;
+  padding: 32px 40px;
+  border-top: 2px solid var(--blog-border);
+  border-bottom: 2px solid var(--blog-border);
+  letter-spacing: -0.01em;
 }
 
 .post-body blockquote::before {
   content: "\201C";
-  font-family: var(--hh-font-display);
-  font-size: 5rem;
+  font-size: 3.5rem;
   line-height: 0;
-  position: absolute;
-  top: 24px;
-  left: 16px;
-  color: var(--hh-rule);
-  font-style: normal;
+  vertical-align: -14px;
+  font-family: var(--blog-font-display);
+  font-weight: 300;
+  opacity: 0.3;
 }
 
 .post-body blockquote::after {
-  content: "";
-  display: none;
+  content: "\201D";
+  font-size: 3.5rem;
+  line-height: 0;
+  vertical-align: -24px;
+  font-family: var(--blog-font-display);
+  font-weight: 300;
+  opacity: 0.3;
 }
 
 .post-body ul {
@@ -771,90 +709,77 @@
 }
 
 .post-body li {
-  margin-bottom: 16px;
-  padding-left: 20px;
+  margin-bottom: 14px;
+  padding-left: 24px;
   position: relative;
-  line-height: 1.75;
 }
 
 .post-body li::before {
-  content: "·";
+  content: "";
   position: absolute;
   left: 0;
-  color: var(--hh-berry);
-  font-size: 1.5rem;
-  line-height: 1.3;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--blog-accent);
+  border-radius: 2px;
 }
 
-/* ==========================================================================
-   Footer & Back Navigation
-   ========================================================================== */
-
+/* --- Back Navigation --- */
 .back-to-writing-nav {
   text-align: center;
-  margin: 72px 0 56px 0;
+  margin: 64px 0 48px 0;
 }
 
 .back-to-writing-btn {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-family: var(--blog-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--hh-ink);
-  border: 1px solid var(--hh-rule-dark);
-  padding: 12px 32px;
+  letter-spacing: 0.08em;
+  color: var(--blog-text-dark);
+  border: 1px solid var(--blog-border-dark);
+  border-radius: 100px;
+  padding: 14px 32px;
   text-decoration: none;
-  border-radius: 2px;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
   display: inline-block;
 }
 
 .back-to-writing-btn:hover {
-  background-color: var(--hh-berry);
-  color: var(--hh-surface);
-  border-color: var(--hh-berry);
+  background-color: var(--blog-text-dark);
+  color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
+/* --- Footer --- */
 .blog-footer {
-  border-top: 1px solid var(--hh-rule);
+  border-top: 1px solid var(--blog-border);
   padding: 48px 0;
   text-align: center;
-  background-color: var(--hh-parchment);
 }
 
 .blog-footer__copyright {
-  font-family: var(--hh-font-label);
-  font-size: 0.62rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--hh-ink-faint);
+  letter-spacing: 0.06em;
+  color: var(--blog-text-light);
   margin-top: 12px;
 }
 
 /* ==========================================================================
-   About Page — Reused class compatibility
+   About Page Styles (legacy class compat + new)
    ========================================================================== */
 
-.blog-header {
-  border-bottom: 1px solid var(--hh-rule);
-  background-color: rgba(244, 237, 228, 0.92);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+/* Legacy class mappings for about page */
+.blog-header { composes: blog-nav; }
 
 .blog-container {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 32px;
-}
-
-.blog-narrow {
-  max-width: 660px;
-  margin: 0 auto;
 }
 
 .blog-header__inner {
@@ -865,17 +790,16 @@
 }
 
 .blog-header__logo {
-  font-family: var(--hh-font-smallcaps);
+  font-family: var(--blog-font-display);
   font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: var(--hh-ink);
+  font-weight: 700;
+  color: var(--blog-text-dark);
   text-decoration: none;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .blog-header__logo span {
-  color: var(--hh-berry);
+  color: var(--blog-accent);
 }
 
 .blog-header__nav {
@@ -885,56 +809,60 @@
 }
 
 .blog-header__link {
-  font-family: var(--hh-font-label);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-family: var(--blog-font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--hh-ink-light);
+  letter-spacing: 0.06em;
+  color: var(--blog-text-muted);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .blog-header__link:hover {
-  color: var(--hh-berry);
+  color: var(--blog-text-dark);
 }
 
 .blog-header__btn {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 500;
+  background-color: var(--blog-accent);
+  color: #FFFFFF;
+  font-family: var(--blog-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--hh-surface);
-  background-color: var(--hh-berry);
-  padding: 8px 20px;
+  letter-spacing: 0.06em;
+  padding: 10px 20px;
+  border-radius: 100px;
   text-decoration: none;
-  border-radius: 2px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .blog-header__btn:hover {
-  background-color: var(--hh-berry-light);
+  background-color: var(--blog-accent-hover);
 }
 
-/* About page content styles */
+.blog-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .blog-title {
-  font-family: var(--hh-font-display);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--hh-ink);
+  font-family: var(--blog-font-display);
+  font-weight: 700;
+  color: var(--blog-text-dark);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-.text-4xl { font-size: 2.25rem; line-height: 1.15; }
-.mb-6 { margin-bottom: 1.5rem; }
-.mt-12 { margin-top: 3rem; }
-.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.text-4xl { font-size: 2.4rem; }
+.text-center { text-align: center; }
 
+/* About page post content */
 .post-content {
-  font-family: var(--hh-font-body);
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: var(--hh-ink);
+  font-family: var(--blog-font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--blog-text-mid);
 }
 
 .post-content p {
@@ -943,97 +871,88 @@
 
 .post-content strong {
   font-weight: 600;
-  color: var(--hh-ink);
+  color: var(--blog-text-dark);
 }
 
 .post-content h3 {
-  font-family: var(--hh-font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-style: italic;
-  margin-top: 40px;
+  font-family: var(--blog-font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-top: 48px;
   margin-bottom: 16px;
-  color: var(--hh-ink);
+  color: var(--blog-text-dark);
+  letter-spacing: -0.01em;
 }
 
 /* Subscribe card */
 .subscribe-card {
-  background-color: var(--hh-surface);
-  border: 1px solid var(--hh-rule);
-  padding: 32px;
+  background-color: var(--blog-surface);
+  border: 1px solid var(--blog-border);
+  border-radius: var(--blog-radius-lg);
+  padding: 36px;
 }
 
 .subscribe-card__title {
-  font-family: var(--hh-font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-style: italic;
-  margin-bottom: 12px;
-  color: var(--hh-ink);
+  font-family: var(--blog-font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .subscribe-card__desc {
   font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--hh-ink-light);
-  margin-bottom: 20px;
+  color: var(--blog-text-muted);
+  margin-bottom: 24px;
 }
 
 .subscribe-form {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .subscribe-form__input {
-  padding: 10px 14px;
-  font-family: var(--hh-font-body);
-  font-size: 0.9rem;
-  border: 1px solid var(--hh-rule);
-  background-color: var(--hh-parchment);
-  color: var(--hh-ink);
+  flex: 1;
+  padding: 12px 16px;
+  font-family: var(--blog-font-body);
+  font-size: 0.88rem;
+  border: 1px solid var(--blog-border);
+  border-radius: var(--blog-radius);
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.2s ease;
 }
 
 .subscribe-form__input:focus {
-  border-color: var(--hh-berry);
-}
-
-.subscribe-form__input::placeholder {
-  color: var(--hh-ink-faint);
-  font-style: italic;
+  border-color: var(--blog-accent);
 }
 
 .subscribe-form__btn {
-  background-color: var(--hh-berry);
-  color: var(--hh-surface);
-  padding: 10px;
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 500;
+  background-color: var(--blog-text-dark);
+  color: #FFFFFF;
+  padding: 12px 24px;
+  font-family: var(--blog-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.06em;
   border: none;
+  border-radius: var(--blog-radius);
   cursor: pointer;
-  border-radius: 2px;
-  transition: background-color 0.3s ease;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
 .subscribe-form__btn:hover {
-  background-color: var(--hh-berry-light);
+  opacity: 0.88;
 }
 
 .subscribe-success {
-  font-family: var(--hh-font-label);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--hh-leaf);
+  font-family: var(--blog-font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--blog-accent);
   padding: 16px;
-}
-
-.text-center {
-  text-align: center;
 }
 
 /* About page footer */
@@ -1050,22 +969,20 @@
 }
 
 .blog-footer__link {
-  font-family: var(--hh-font-label);
-  font-size: 0.65rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--hh-ink-light);
+  font-family: var(--blog-font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--blog-text-muted);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .blog-footer__link:hover {
-  color: var(--hh-berry);
+  color: var(--blog-text-dark);
 }
 
 /* ==========================================================================
-   Responsive Adjustments
+   Responsive
    ========================================================================== */
 
 @media (max-width: 768px) {
@@ -1074,86 +991,45 @@
   }
 
   .blog-nav__link {
-    font-size: 0.62rem;
+    font-size: 0.72rem;
+  }
+
+  .blog-nav__btn {
+    padding: 8px 14px;
+    font-size: 0.68rem;
   }
 
   .masthead {
-    padding: 40px 0 16px 0;
+    padding: 48px 0 16px 0;
   }
 
   .dateline-bar {
-    flex-direction: column;
+    font-size: 0.6rem;
+    flex-wrap: wrap;
     gap: 4px;
-    text-align: center;
+    justify-content: center;
   }
 
-  .featured-article__title {
-    font-size: 1.8rem;
-  }
-
-  .post-header {
-    padding: 48px 0 28px 0;
-  }
-
-  .post-header__title {
-    font-size: 1.8rem;
-  }
-
-  .post-body blockquote {
-    padding: 24px 20px;
-    font-size: 1.3rem;
+  .editorial-grid__main {
+    padding-right: 0;
+    border-right: none;
   }
 
   .action-share-bar {
     flex-direction: column;
-    gap: 8px;
-    text-align: center;
+    gap: 12px;
+    padding: 14px 0;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
   }
 
   .blog-header__nav {
     gap: 16px;
   }
-}
-
-@media (max-width: 480px) {
-  .blog-nav__inner {
-    height: 60px;
-  }
-
-  .blog-nav__links {
-    gap: 12px;
-  }
-
-  .blog-nav__link {
-    display: none;
-  }
-
-  .masthead__title {
-    font-size: 2.5rem;
-  }
-
-  .featured-article__title {
-    font-size: 1.5rem;
-  }
 
   .blog-header__link {
-    display: none;
+    font-size: 0.72rem;
   }
-}
-
-/* ==========================================================================
-   Decorative ornament — optional botanical separator
-   ========================================================================== */
-
-.broadsheet-double-rule::before {
-  content: "✦";
-  position: absolute;
-  top: -0.65em;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.7rem;
-  color: var(--hh-rule-dark);
-  background-color: var(--hh-parchment);
-  padding: 0 12px;
-  display: none; /* Enable if you want the ornament instead of text label */
 }
