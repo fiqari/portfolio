@@ -1,34 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Serif:ital,wght@0,400;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+SC:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600&display=swap');
 
 /* ==========================================================================
-   Health Herald — Broadsheet Editorial & Data System Styles
-   A hybrid of WSJ Structural Authority & Bloomberg Data High-Contrast
-   Typographic Direction: Trabucco Campos Approved (Instrument Serif + Lora + IBM Plex Mono)
+   Health Herald — Botanical Editorial Design System
+   Inspired by artisanal label design: Wild Roots, apothecary, and
+   fine broadsheet typography. Warm, organic, refined.
    ========================================================================== */
 
 :root {
-  --blog-bg: #FAF9F5;          /* Warm, high-grade book-paper cream */
-  --blog-surface: #FFFFFF;
-  --blog-text-dark: #121212;   /* Crisp, ink-like black */
-  --blog-text-muted: #55524D;  /* Charcoal with a hint of warm stone */
-  --blog-border-thin: #DCD9D0; /* Hairline grey rules, classic newspaper-print style */
-  --blog-border-thick: #121212;
-  --blog-accent-green: #07472A; /* Editorial forest green */
-  --blog-accent-blue: #0A59E4;  /* Bloomberg-style electric blue highlight */
-  
-  --blog-font-display: "Instrument Serif", "Playfair Display", Georgia, serif;
-  --blog-font-body: "Lora", Georgia, serif;
-  --blog-font-mono: "IBM Plex Mono", Courier, monospace;
+  /* Palette — warm parchment + deep botanical tones */
+  --hh-parchment:     #F4EDE4;       /* Warm aged paper */
+  --hh-parchment-alt: #EDE5DA;       /* Slightly deeper cream for cards */
+  --hh-surface:       #FDFAF6;       /* Lightest surface, near-white warmth */
+  --hh-ink:           #2C2421;       /* Rich dark brown-black, softer than pure black */
+  --hh-ink-light:     #5C524A;       /* Warm muted brown for secondary text */
+  --hh-ink-faint:     #8A7F76;       /* Gentle stone for tertiary text */
+  --hh-rule:          #D4CBC0;       /* Hairline rules, warm grey */
+  --hh-rule-dark:     #A69D93;       /* Emphasized rules */
+  --hh-berry:         #6B2D5B;       /* Deep plum/berry — primary accent (from berries) */
+  --hh-berry-light:   #8A4578;       /* Lighter berry for hover states */
+  --hh-leaf:          #4A6741;        /* Muted botanical green */
+  --hh-leaf-light:    #6A8A5E;       /* Lighter green for subtle accents */
+
+  /* Typography stack */
+  --hh-font-display:   "Cormorant Garamond", "Garamond", "Times New Roman", serif;
+  --hh-font-smallcaps: "Cormorant SC", "Cormorant Garamond", serif;
+  --hh-font-body:      "EB Garamond", "Garamond", Georgia, serif;
+  --hh-font-label:     "Josefin Sans", "Gill Sans", "Helvetica Neue", sans-serif;
 }
 
-/* --- Layout Base --- */
+/* --- Global Reset & Base --- */
 .blog-theme {
-  background-color: var(--blog-bg);
-  color: var(--blog-text-dark);
-  font-family: var(--blog-font-body);
-  font-size: 1.1rem;
-  line-height: 1.8;
+  background-color: var(--hh-parchment);
+  color: var(--hh-ink);
+  font-family: var(--hh-font-body);
+  font-size: 1.125rem;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
@@ -36,224 +44,338 @@
   box-sizing: border-box;
 }
 
+.blog-theme a {
+  color: inherit;
+}
+
+/* --- Layout Constraints --- */
 .blog-width-limit {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
 .blog-width-narrow {
-  max-width: 680px;
+  max-width: 660px;
   margin: 0 auto;
 }
 
-/* --- Broadsheet Grid Layout & Rule Lines --- */
-.broadsheet-border-top {
-  border-top: 1px solid var(--blog-border-thin);
+/* --- Utility --- */
+.py-8  { padding-top: 2rem; padding-bottom: 2rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+
+/* ==========================================================================
+   Navigation — Refined, minimal, label-like
+   ========================================================================== */
+
+.blog-nav {
+  border-bottom: 1px solid var(--hh-rule);
+  background-color: rgba(244, 237, 228, 0.92);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.broadsheet-border-bottom {
-  border-bottom: 1px solid var(--blog-border-thin);
+.blog-nav__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
 }
 
-.broadsheet-double-rule {
-  border-top: 4px double var(--blog-text-dark);
-  border-bottom: 1px solid var(--blog-text-dark);
-  padding: 8px 0;
-  margin: 24px 0;
+.blog-nav__logo {
+  font-family: var(--hh-font-smallcaps);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--hh-ink);
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.broadsheet-hairline-rule {
-  height: 1px;
-  background-color: var(--blog-border-thin);
-  border: none;
-  margin: 32px 0;
+.blog-nav__logo span {
+  color: var(--hh-berry);
 }
 
-/* --- Masthead Section (Classic Newspaper Title) --- */
+.blog-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.blog-nav__link {
+  font-family: var(--hh-font-label);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--hh-ink-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-nav__link:hover {
+  color: var(--hh-berry);
+}
+
+.blog-nav__btn {
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--hh-surface);
+  background-color: var(--hh-berry);
+  padding: 8px 20px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.blog-nav__btn:hover {
+  background-color: var(--hh-berry-light);
+}
+
+/* ==========================================================================
+   Masthead — Elegant, centered, apothecary label feel
+   ========================================================================== */
+
 .masthead {
   text-align: center;
-  padding: 48px 0 16px 0;
+  padding: 64px 0 24px 0;
+  position: relative;
+}
+
+.masthead::before,
+.masthead::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 1px;
+  background-color: var(--hh-rule-dark);
+  margin: 0 auto 24px auto;
+}
+
+.masthead::after {
+  margin: 24px auto 0 auto;
 }
 
 .masthead__sub-label {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blog-accent-green);
-  font-weight: 700;
-  margin-bottom: 8px;
+  letter-spacing: 0.25em;
+  color: var(--hh-berry);
+  display: block;
+  margin-bottom: 16px;
 }
 
 .masthead__title {
-  font-family: var(--blog-font-display);
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--blog-text-dark);
+  font-family: var(--hh-font-display);
+  font-size: clamp(3.2rem, 9vw, 6rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--hh-ink);
   margin: 0;
+  font-style: italic;
 }
 
 .masthead__tagline {
-  font-family: var(--blog-font-body);
+  font-family: var(--hh-font-body);
   font-style: italic;
-  font-size: 1.1rem;
-  color: var(--blog-text-muted);
-  max-width: 600px;
-  margin: 12px auto 0 auto;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  color: var(--hh-ink-light);
+  max-width: 520px;
+  margin: 20px auto 0 auto;
+  line-height: 1.6;
 }
 
-/* --- Issue Dateline Bar (WSJ Broadside style) --- */
+/* ==========================================================================
+   Dateline Bar — Thin, elegant, label-format
+   ========================================================================== */
+
 .dateline-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--blog-font-mono);
-  font-size: 0.72rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.62rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blog-text-muted);
-  border-top: 1px solid var(--blog-text-dark);
-  border-bottom: 1px solid var(--blog-text-dark);
-  padding: 6px 12px;
-  margin-bottom: 32px;
+  letter-spacing: 0.18em;
+  color: var(--hh-ink-faint);
+  border-top: 1px solid var(--hh-rule-dark);
+  border-bottom: 1px solid var(--hh-rule-dark);
+  padding: 10px 16px;
+  margin-bottom: 48px;
 }
 
 .dateline-bar__issue {
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--hh-ink-light);
 }
 
-/* --- Article Columns Grid (WSJ style) --- */
+/* ==========================================================================
+   Editorial Grid — Asymmetric two-column layout
+   ========================================================================== */
+
 .editorial-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 40px;
 }
 
 @media (min-width: 1024px) {
   .editorial-grid {
-    grid-template-columns: 8fr 4fr; /* Main story and sidebar */
-    gap: 48px;
+    grid-template-columns: 7fr 3fr;
+    gap: 56px;
   }
-  
+
   .editorial-grid__main {
-    border-right: 1px solid var(--blog-border-thin);
-    padding-right: 48px;
+    border-right: 1px solid var(--hh-rule);
+    padding-right: 56px;
   }
 }
 
-/* --- Featured Article Spotlight --- */
+/* ==========================================================================
+   Featured Article — Hero treatment, botanical elegance
+   ========================================================================== */
+
 .featured-article {
-  margin-bottom: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--hh-rule);
 }
 
 .featured-article__label {
-  font-family: var(--blog-font-mono);
-  font-size: 0.7rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.6rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blog-accent-green);
-  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--hh-berry);
   display: inline-block;
-  margin-bottom: 12px;
-  border-bottom: 2px solid var(--blog-accent-green);
-  padding-bottom: 2px;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--hh-berry);
 }
 
 .featured-article__title {
-  font-family: var(--blog-font-display);
-  font-size: clamp(2.2rem, 5vw, 3.25rem);
+  font-family: var(--hh-font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--blog-text-dark);
-  margin-bottom: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--hh-ink);
+  margin-bottom: 20px;
 }
 
 .featured-article__title a {
   text-decoration: none;
-  background-image: linear-gradient(transparent 95%, var(--blog-border-thin) 95%);
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  transition: background-size 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .featured-article__title a:hover {
-  background-size: 100% 100%;
-  color: var(--blog-accent-green);
+  color: var(--hh-berry);
 }
 
 .featured-article__meta {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
-  color: var(--blog-text-muted);
-  margin-bottom: 18px;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--hh-ink-faint);
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
 }
 
 .featured-article__byline {
-  font-weight: 700;
-  color: var(--blog-text-dark);
+  font-weight: 500;
+  color: var(--hh-ink-light);
 }
 
 .featured-article__excerpt {
-  font-family: var(--blog-font-body);
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: var(--blog-text-muted);
-  margin-bottom: 20px;
+  font-family: var(--hh-font-body);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--hh-ink-light);
+  margin-bottom: 24px;
 }
 
 .read-more-link {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--blog-accent-green);
-  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--hh-berry);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  transition: color 0.3s ease, gap 0.3s ease;
 }
 
 .read-more-link::after {
-  content: " →";
-  transition: transform 0.2s ease;
+  content: "→";
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.read-more-link:hover {
+  color: var(--hh-berry-light);
 }
 
 .read-more-link:hover::after {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
-/* --- Secondary List Grid (Bloomberg high-contrast blocks) --- */
-.secondary-section-title {
-  font-family: var(--blog-font-mono);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blog-text-dark);
-  border-bottom: 2px solid var(--blog-text-dark);
-  padding-bottom: 6px;
-  margin-bottom: 24px;
-  display: block;
+/* ==========================================================================
+   Section Divider — Elegant thin rule with centered label
+   ========================================================================== */
+
+.broadsheet-double-rule {
+  position: relative;
+  border-top: 1px solid var(--hh-rule-dark);
+  padding: 0;
+  margin: 8px 0 32px 0;
+  text-align: center;
 }
+
+.secondary-section-title {
+  font-family: var(--hh-font-smallcaps);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--hh-ink-light);
+  text-transform: uppercase;
+  background-color: var(--hh-parchment);
+  padding: 0 20px;
+  position: relative;
+  top: -0.6em;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Editorial Cards — Secondary articles
+   ========================================================================== */
 
 .card-flow {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 0;
 }
 
 .editorial-card {
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--blog-border-thin);
+  padding: 28px 0;
+  border-bottom: 1px solid var(--hh-rule);
 }
 
 .editorial-card:last-child {
@@ -261,125 +383,145 @@
 }
 
 .editorial-card__meta {
-  font-family: var(--blog-font-mono);
-  font-size: 0.7rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.6rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--blog-text-muted);
+  letter-spacing: 0.14em;
+  color: var(--hh-ink-faint);
   margin-bottom: 8px;
 }
 
 .editorial-card__category {
-  color: var(--blog-accent-green);
-  font-weight: 700;
+  color: var(--hh-berry);
+  font-weight: 500;
   margin-right: 8px;
 }
 
 .editorial-card__title {
-  font-family: var(--blog-font-display);
-  font-size: 1.6rem;
+  font-family: var(--hh-font-display);
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 10px;
-  color: var(--blog-text-dark);
+  color: var(--hh-ink);
+}
+
+.editorial-card__title a {
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .editorial-card__title a:hover {
-  color: var(--blog-accent-green);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--hh-berry);
 }
 
 .editorial-card__excerpt {
   font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--blog-text-muted);
-  margin-bottom: 12px;
+  line-height: 1.65;
+  color: var(--hh-ink-light);
+  margin-bottom: 14px;
 }
 
-/* --- Sidebar Section (Bloomberg style newsletter insert) --- */
+/* ==========================================================================
+   Sidebar — Newsletter & Author widgets
+   ========================================================================== */
+
 .editorial-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 48px;
 }
 
+/* Newsletter — parchment card with thin border */
 .newsletter-box {
-  background-color: var(--blog-surface);
-  border: 1px solid var(--blog-text-dark);
-  box-shadow: 4px 4px 0px 0px var(--blog-text-dark);
-  padding: 24px;
-  margin-bottom: 24px;
+  background-color: var(--hh-surface);
+  border: 1px solid var(--hh-rule);
+  padding: 28px 24px;
 }
 
 .newsletter-box__title {
-  font-family: var(--blog-font-display);
-  font-size: 1.6rem;
-  line-height: 1.15;
-  margin-bottom: 8px;
+  font-family: var(--hh-font-display);
+  font-size: 1.5rem;
   font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  color: var(--hh-ink);
 }
 
 .newsletter-box__desc {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--blog-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--hh-ink-light);
   margin-bottom: 20px;
 }
 
 .newsletter-box__input {
   width: 100%;
   padding: 10px 14px;
-  font-family: var(--blog-font-body);
+  font-family: var(--hh-font-body);
   font-size: 0.9rem;
-  border: 1px solid var(--blog-border-thin);
-  margin-bottom: 12px;
+  border: 1px solid var(--hh-rule);
+  background-color: var(--hh-parchment);
+  color: var(--hh-ink);
+  margin-bottom: 10px;
   outline: none;
-  background-color: var(--blog-bg);
+  transition: border-color 0.3s ease;
 }
 
 .newsletter-box__input:focus {
-  border-color: var(--blog-text-dark);
+  border-color: var(--hh-berry);
+}
+
+.newsletter-box__input::placeholder {
+  color: var(--hh-ink-faint);
+  font-style: italic;
 }
 
 .newsletter-box__btn {
   width: 100%;
-  background-color: var(--blog-text-dark);
-  color: var(--blog-surface);
+  background-color: var(--hh-berry);
+  color: var(--hh-surface);
   padding: 10px;
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  transition: opacity 0.2s ease;
+  letter-spacing: 0.14em;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
 }
 
 .newsletter-box__btn:hover {
-  opacity: 0.9;
+  background-color: var(--hh-berry-light);
 }
 
 .newsletter-box__success {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
-  color: var(--blog-accent-green);
+  font-family: var(--hh-font-label);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--hh-leaf);
   text-align: center;
-  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-/* --- Columnist / Bio Widget --- */
+/* Author Widget — refined bio card */
 .author-widget {
-  border-top: 3px solid var(--blog-text-dark);
-  padding-top: 16px;
+  border-top: 1px solid var(--hh-rule-dark);
+  padding-top: 24px;
 }
 
 .author-widget__title {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-smallcaps);
+  font-size: 0.8rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  margin-bottom: 16px;
+  letter-spacing: 0.18em;
+  margin-bottom: 20px;
+  color: var(--hh-ink-light);
 }
 
 .author-widget__profile {
@@ -389,113 +531,116 @@
 }
 
 .author-widget__avatar {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background-color: var(--blog-accent-green);
-  color: var(--blog-surface);
+  background-color: var(--hh-berry);
+  color: var(--hh-surface);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--blog-font-mono);
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-family: var(--hh-font-smallcaps);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
   flex-shrink: 0;
-  border: 1px solid var(--blog-text-dark);
 }
 
 .author-widget__bio {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--blog-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--hh-ink-light);
 }
 
 .author-widget__bio strong {
-  color: var(--blog-text-dark);
+  color: var(--hh-ink);
+  font-weight: 600;
 }
 
 /* ==========================================================================
-   Article Post Detail Styles
+   Article Detail Styles — Long-form reading experience
    ========================================================================== */
 
 .post-header {
   text-align: center;
-  padding: 64px 0 32px 0;
-  border-bottom: 1px solid var(--blog-border-thin);
-  margin-bottom: 40px;
+  padding: 72px 0 40px 0;
+  border-bottom: 1px solid var(--hh-rule);
+  margin-bottom: 48px;
 }
 
 .post-header__category {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.6rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--blog-accent-green);
-  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--hh-berry);
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .post-header__title {
-  font-family: var(--blog-font-display);
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--blog-text-dark);
-  max-width: 24ch;
-  margin: 0 auto 24px auto;
+  font-family: var(--hh-font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--hh-ink);
+  max-width: 22ch;
+  margin: 0 auto 28px auto;
+  font-style: italic;
 }
 
 .post-header__meta-box {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   padding: 8px 24px;
-  border: 1px solid var(--blog-border-thin);
+  border: 1px solid var(--hh-rule);
   border-radius: 100px;
-  background-color: var(--blog-surface);
-  font-family: var(--blog-font-mono);
-  font-size: 0.72rem;
+  background-color: var(--hh-surface);
+  font-family: var(--hh-font-label);
+  font-size: 0.6rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--blog-text-muted);
+  letter-spacing: 0.1em;
+  color: var(--hh-ink-faint);
 }
 
 .post-header__author {
-  font-weight: 700;
-  color: var(--blog-text-dark);
+  font-weight: 500;
+  color: var(--hh-ink-light);
 }
 
-/* Dynamic Reading Progress Bar */
+/* Reading Progress Bar */
 .scroll-progress-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
-  background-color: rgba(220,217,208,0.3);
+  height: 3px;
+  background-color: transparent;
   z-index: 1000;
 }
 
 .scroll-progress-bar {
   height: 100%;
-  background-color: var(--blog-accent-green);
+  background: linear-gradient(90deg, var(--hh-berry), var(--hh-berry-light));
   width: 0%;
   transition: width 0.1s ease-out;
 }
 
-/* Bloomberg/WSJ Style Share/Action Bar */
+/* Share/Action Bar */
 .action-share-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--blog-text-dark);
-  border-bottom: 1px solid var(--blog-text-dark);
-  padding: 8px 12px;
+  border-top: 1px solid var(--hh-rule);
+  border-bottom: 1px solid var(--hh-rule);
+  padding: 10px 16px;
   margin-bottom: 48px;
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
 }
 
 .action-share-bar__group {
@@ -507,233 +652,508 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--blog-text-muted);
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  color: var(--hh-ink-faint);
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 .action-share-bar__btn:hover {
-  color: var(--blog-text-dark);
+  color: var(--hh-berry);
 }
 
 .action-share-bar__link {
-  color: var(--blog-text-muted);
+  color: var(--hh-ink-faint);
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: color 0.3s ease;
 }
 
 .action-share-bar__link:hover {
-  color: var(--blog-text-dark);
+  color: var(--hh-berry);
 }
 
-/* --- Long-form Editorial Body Styles (Trabucco Campos approved) --- */
+/* ==========================================================================
+   Post Body — Editorial long-form reading
+   ========================================================================== */
+
 .post-body {
-  font-family: var(--blog-font-body);
+  font-family: var(--hh-font-body);
   font-size: 1.125rem;
-  line-height: 1.85;
-  color: var(--blog-text-dark);
+  line-height: 1.9;
+  color: var(--hh-ink);
 }
 
 .post-body p {
   margin-bottom: 28px;
-  text-align: justify;
+  text-indent: 1.5em;
 }
 
-/* Editorial Drop Cap (WSJ traditional styling) */
+.post-body p:first-of-type {
+  text-indent: 0;
+}
+
+/* Editorial Drop Cap — refined, lighter weight */
 .post-body p:first-of-type::first-letter {
-  font-family: var(--blog-font-display);
-  font-size: 4.8rem;
-  line-height: 0.8;
+  font-family: var(--hh-font-display);
+  font-size: 4.5rem;
+  line-height: 0.75;
   float: left;
-  margin-top: 4px;
+  margin-top: 6px;
   margin-right: 12px;
-  margin-bottom: 0px;
-  color: var(--blog-text-dark);
-  font-weight: 400;
+  margin-bottom: 0;
+  color: var(--hh-berry);
+  font-weight: 300;
+  font-style: italic;
 }
 
 .post-body h2 {
-  font-family: var(--blog-font-display);
-  font-size: 1.85rem;
+  font-family: var(--hh-font-display);
+  font-size: 1.75rem;
   font-weight: 400;
-  line-height: 1.25;
-  margin-top: 48px;
-  margin-bottom: 18px;
-  color: var(--blog-text-dark);
-  border-bottom: 1px solid var(--blog-border-thin);
-  padding-bottom: 8px;
+  font-style: italic;
+  line-height: 1.3;
+  margin-top: 56px;
+  margin-bottom: 20px;
+  color: var(--hh-ink);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hh-rule);
 }
 
-/* Pulled quotes */
+/* Pull Quotes — centered, elegant, berry-toned */
 .post-body blockquote {
-  font-family: var(--blog-font-display);
-  font-size: 1.65rem;
-  line-height: 1.4;
-  color: var(--blog-accent-green);
+  font-family: var(--hh-font-display);
+  font-size: 1.55rem;
+  line-height: 1.45;
+  color: var(--hh-berry);
   text-align: center;
   font-style: italic;
-  margin: 48px 0;
-  padding: 24px 40px;
-  border-top: 1px solid var(--blog-text-dark);
-  border-bottom: 1px solid var(--blog-text-dark);
-  background-color: var(--blog-surface);
+  font-weight: 300;
+  margin: 56px 0;
+  padding: 32px 48px;
+  border-top: 1px solid var(--hh-rule-dark);
+  border-bottom: 1px solid var(--hh-rule-dark);
+  background-color: transparent;
+  position: relative;
 }
 
 .post-body blockquote::before {
-  content: "“";
-  font-size: 4rem;
+  content: "\201C";
+  font-family: var(--hh-font-display);
+  font-size: 5rem;
   line-height: 0;
-  vertical-align: -18px;
-  font-family: var(--blog-font-display);
-  opacity: 0.3;
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  color: var(--hh-rule);
+  font-style: normal;
 }
 
 .post-body blockquote::after {
-  content: "”";
-  font-size: 4rem;
-  line-height: 0;
-  vertical-align: -30px;
-  font-family: var(--blog-font-display);
-  opacity: 0.3;
+  content: "";
+  display: none;
 }
 
 .post-body ul {
-  list-style-type: square;
-  padding-left: 24px;
+  list-style-type: none;
+  padding-left: 0;
   margin-bottom: 28px;
 }
 
 .post-body li {
-  margin-bottom: 12px;
-  padding-left: 4px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.75;
 }
 
-/* Footer Section Inside Detail */
-.post-footer-cta {
-  margin-top: 64px;
-  border-top: 1px solid var(--blog-text-dark);
-  padding-top: 40px;
+.post-body li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--hh-berry);
+  font-size: 1.5rem;
+  line-height: 1.3;
 }
+
+/* ==========================================================================
+   Footer & Back Navigation
+   ========================================================================== */
 
 .back-to-writing-nav {
   text-align: center;
-  margin: 64px 0 48px 0;
+  margin: 72px 0 56px 0;
 }
 
 .back-to-writing-btn {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  color: var(--blog-text-dark);
-  border: 1px solid var(--blog-text-dark);
-  padding: 12px 28px;
+  letter-spacing: 0.14em;
+  color: var(--hh-ink);
+  border: 1px solid var(--hh-rule-dark);
+  padding: 12px 32px;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   display: inline-block;
 }
 
 .back-to-writing-btn:hover {
-  background-color: var(--blog-text-dark);
-  color: var(--blog-surface);
+  background-color: var(--hh-berry);
+  color: var(--hh-surface);
+  border-color: var(--hh-berry);
 }
 
-/* --- Blog Page Header & Footer (Integrated but stylised) --- */
-.blog-nav {
-  border-bottom: 1px solid var(--blog-border-thin);
-  background-color: rgba(250, 249, 245, 0.95);
-  backdrop-filter: blur(8px);
+.blog-footer {
+  border-top: 1px solid var(--hh-rule);
+  padding: 48px 0;
+  text-align: center;
+  background-color: var(--hh-parchment);
+}
+
+.blog-footer__copyright {
+  font-family: var(--hh-font-label);
+  font-size: 0.62rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--hh-ink-faint);
+  margin-top: 12px;
+}
+
+/* ==========================================================================
+   About Page — Reused class compatibility
+   ========================================================================== */
+
+.blog-header {
+  border-bottom: 1px solid var(--hh-rule);
+  background-color: rgba(244, 237, 228, 0.92);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.blog-nav__inner {
+.blog-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.blog-narrow {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.blog-header__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 72px;
 }
 
-.blog-nav__logo {
-  font-family: var(--blog-font-display);
-  font-size: 1.4rem;
-  color: var(--blog-text-dark);
-  text-decoration: none;
+.blog-header__logo {
+  font-family: var(--hh-font-smallcaps);
+  font-size: 1.35rem;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.12em;
+  color: var(--hh-ink);
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.blog-nav__logo span {
-  color: var(--blog-accent-green);
-  font-weight: 700;
+.blog-header__logo span {
+  color: var(--hh-berry);
 }
 
-.blog-nav__links {
+.blog-header__nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
-.blog-nav__link {
-  font-family: var(--blog-font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--blog-text-muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.blog-nav__link:hover {
-  color: var(--blog-text-dark);
-}
-
-.blog-nav__link--active {
-  color: var(--blog-text-dark);
-  font-weight: 700;
-}
-
-.blog-nav__btn {
-  background-color: var(--blog-accent-green);
-  color: var(--blog-surface);
-  font-family: var(--blog-font-mono);
+.blog-header__link {
+  font-family: var(--hh-font-label);
   font-size: 0.7rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 8px 16px;
+  letter-spacing: 0.14em;
+  color: var(--hh-ink-light);
   text-decoration: none;
-  font-weight: 700;
-  transition: background-color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
-.blog-nav__btn:hover {
-  background-color: var(--blog-text-dark);
+.blog-header__link:hover {
+  color: var(--hh-berry);
 }
 
-.blog-footer {
-  border-top: 1px solid var(--blog-border-thin);
-  padding: 48px 0;
-  background-color: #FAF9F5;
+.blog-header__btn {
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--hh-surface);
+  background-color: var(--hh-berry);
+  padding: 8px 20px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.blog-header__btn:hover {
+  background-color: var(--hh-berry-light);
+}
+
+/* About page content styles */
+.blog-title {
+  font-family: var(--hh-font-display);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--hh-ink);
+}
+
+.text-4xl { font-size: 2.25rem; line-height: 1.15; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-12 { margin-top: 3rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+
+.post-content {
+  font-family: var(--hh-font-body);
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--hh-ink);
+}
+
+.post-content p {
+  margin-bottom: 24px;
+}
+
+.post-content strong {
+  font-weight: 600;
+  color: var(--hh-ink);
+}
+
+.post-content h3 {
+  font-family: var(--hh-font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  color: var(--hh-ink);
+}
+
+/* Subscribe card */
+.subscribe-card {
+  background-color: var(--hh-surface);
+  border: 1px solid var(--hh-rule);
+  padding: 32px;
+}
+
+.subscribe-card__title {
+  font-family: var(--hh-font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 12px;
+  color: var(--hh-ink);
+}
+
+.subscribe-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--hh-ink-light);
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subscribe-form__input {
+  padding: 10px 14px;
+  font-family: var(--hh-font-body);
+  font-size: 0.9rem;
+  border: 1px solid var(--hh-rule);
+  background-color: var(--hh-parchment);
+  color: var(--hh-ink);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.subscribe-form__input:focus {
+  border-color: var(--hh-berry);
+}
+
+.subscribe-form__input::placeholder {
+  color: var(--hh-ink-faint);
+  font-style: italic;
+}
+
+.subscribe-form__btn {
+  background-color: var(--hh-berry);
+  color: var(--hh-surface);
+  padding: 10px;
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-form__btn:hover {
+  background-color: var(--hh-berry-light);
+}
+
+.subscribe-success {
+  font-family: var(--hh-font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--hh-leaf);
+  padding: 16px;
+}
+
+.text-center {
   text-align: center;
 }
 
-.blog-footer__copyright {
-  font-family: var(--blog-font-mono);
-  font-size: 0.7rem;
+/* About page footer */
+.blog-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.blog-footer__links {
+  display: flex;
+  gap: 24px;
+}
+
+.blog-footer__link {
+  font-family: var(--hh-font-label);
+  font-size: 0.65rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--blog-text-muted);
-  margin-top: 12px;
+  letter-spacing: 0.12em;
+  color: var(--hh-ink-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-footer__link:hover {
+  color: var(--hh-berry);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .blog-nav__links {
+    gap: 16px;
+  }
+
+  .blog-nav__link {
+    font-size: 0.62rem;
+  }
+
+  .masthead {
+    padding: 40px 0 16px 0;
+  }
+
+  .dateline-bar {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .featured-article__title {
+    font-size: 1.8rem;
+  }
+
+  .post-header {
+    padding: 48px 0 28px 0;
+  }
+
+  .post-header__title {
+    font-size: 1.8rem;
+  }
+
+  .post-body blockquote {
+    padding: 24px 20px;
+    font-size: 1.3rem;
+  }
+
+  .action-share-bar {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .blog-header__nav {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-nav__inner {
+    height: 60px;
+  }
+
+  .blog-nav__links {
+    gap: 12px;
+  }
+
+  .blog-nav__link {
+    display: none;
+  }
+
+  .masthead__title {
+    font-size: 2.5rem;
+  }
+
+  .featured-article__title {
+    font-size: 1.5rem;
+  }
+
+  .blog-header__link {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Decorative ornament — optional botanical separator
+   ========================================================================== */
+
+.broadsheet-double-rule::before {
+  content: "✦";
+  position: absolute;
+  top: -0.65em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: var(--hh-rule-dark);
+  background-color: var(--hh-parchment);
+  padding: 0 12px;
+  display: none; /* Enable if you want the ornament instead of text label */
 }
